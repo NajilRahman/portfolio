@@ -7,6 +7,8 @@ import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 function App() {
   const [activeSection, setActiveSection] = useState('experience');
@@ -32,7 +34,6 @@ function App() {
             }
           },
           {
-            // Triggers active state when section is centered in viewport
             rootMargin: '-25% 0px -55% 0px',
             threshold: 0,
           }
@@ -46,6 +47,119 @@ function App() {
       activeObservers.forEach(({ observer, element }) => {
         observer.unobserve(element);
       });
+    };
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initial page load reveal
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    // Animate Sidebar on load
+    tl.fromTo('aside', 
+      { opacity: 0, x: -60 }, 
+      { opacity: 1, x: 0, duration: 1.2 }
+    );
+
+    // Animate first section content on load
+    tl.fromTo('#experience', 
+      { opacity: 0, y: 40 }, 
+      { opacity: 1, y: 0, duration: 1.0 }, 
+      '-=0.8'
+    );
+
+    // Scroll reveal triggers for the rest of the sections
+    const animateSections = ['projects', 'skills', 'about', 'contact'];
+
+    animateSections.forEach((secId) => {
+      const el = document.getElementById(secId);
+      if (el) {
+        // Create scroll trigger for heading
+        gsap.fromTo(el.querySelectorAll('h2, p.font-mono'), 
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            }
+          }
+        );
+
+        // Sub-elements animations
+        if (secId === 'projects') {
+          gsap.fromTo(el.querySelectorAll('.glass-panel'),
+            { opacity: 0, y: 50, scale: 0.96 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.8,
+              stagger: 0.15,
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 75%',
+                toggleActions: 'play none none none',
+              }
+            }
+          );
+        } else if (secId === 'skills') {
+          gsap.fromTo(el.querySelectorAll('.glass-panel'),
+            { opacity: 0, scale: 0.92, y: 30 },
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.12,
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 75%',
+                toggleActions: 'play none none none',
+              }
+            }
+          );
+        } else if (secId === 'about') {
+          gsap.fromTo(el.querySelectorAll('.glass-panel'),
+            { opacity: 0, x: -40 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.8,
+              stagger: 0.2,
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 75%',
+                toggleActions: 'play none none none',
+              }
+            }
+          );
+        } else if (secId === 'contact') {
+          gsap.fromTo(el.querySelectorAll('.glass-panel, form, button'),
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              stagger: 0.12,
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 75%',
+                toggleActions: 'play none none none',
+              }
+            }
+          );
+        }
+      }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 

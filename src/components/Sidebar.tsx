@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink, ShieldCheck } from 'lucide-react';
+import myImage from '../assets/myimage.jpg.jpeg';
 
 export const Sidebar: React.FC = () => {
   return (
@@ -12,8 +13,8 @@ export const Sidebar: React.FC = () => {
         {/* CSS Glass Avatar Graphic */}
         <div className="relative z-10 w-full h-full rounded-2xl bg-[#0D0D0D]/80 backdrop-blur-md flex flex-col items-center justify-center border border-white/5 transition-all group-hover:bg-[#0D0D0D]/60">
           <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-[#4B0082] via-[#0F52BA] to-[#00FA9A] flex items-center justify-center p-[2px] shadow-lg shadow-black/50">
-            <div className="w-full h-full rounded-full bg-[#0D0D0D] flex items-center justify-center font-serif text-3xl font-bold text-white tracking-widest">
-              NR
+            <div className="w-full h-full rounded-full overflow-hidden bg-[#0D0D0D] flex items-center justify-center">
+              <img src={myImage} alt="Najil Rahman" className="w-full h-full object-cover" />
             </div>
             <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-[#0D0D0D] border border-white/10 flex items-center justify-center shadow-lg">
               <ShieldCheck className="w-4 h-4 text-emerald-glow" />

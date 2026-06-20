@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { ExternalLink, Github, Database, Brain, Lock, Server, Car, Calendar, ShoppingBag, BookOpen, Key } from 'lucide-react';
+import { ExternalLink, Github, Database, Brain, Lock, Server, Car, Calendar, ShoppingBag, BookOpen, Key, ShieldCheck, Users, ShoppingCart } from 'lucide-react';
 
 interface Project {
   name: string;
@@ -19,6 +19,36 @@ const projectsData: Project[] = [
     technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "PostgreSQL", "Redis", "Socket.IO"],
     impact: "Processed compliant monthly payroll for 150,000+ employees. Implemented worker clustering, boosting request throughput by 65%.",
     icon: <Server className="w-5 h-5 text-indigo-400" />,
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
+  },
+  {
+    name: "Centralized SSO Authentication Gateway",
+    description: "Centralized single sign-on (SSO) gateway. Handles secure session hand-offs, cookie protection, role-based authorization rules, and brute-force API rate-limiting rules.",
+    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "Mongoose", "JWT", "Zod", "Express Rate Limit"],
+    impact: "Implemented secure token exchange flow and custom middleware checks, mitigating credential sniffing and session hijack vectors.",
+    icon: <ShieldCheck className="w-5 h-5 text-blue-400" />,
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
+  },
+  {
+    name: "Ecosystem Multi-Tenant CRM API",
+    description: "Multi-tenant business lead pipeline, client messaging schedulers, and support queue automation API. Backed by Socket.IO for live agents communications.",
+    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "Redis", "Socket.IO", "Nodemailer", "PDFKit", "Node-Cron"],
+    impact: "Integrated Redis-based queues and cron job workers to automate daily operations reports, increasing team responsiveness.",
+    icon: <Users className="w-5 h-5 text-emerald-400" />,
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
+  },
+  {
+    name: "Flow E-commerce API",
+    description: "High-volume retail e-commerce backend engine supporting dynamic cart checkouts, invoice PDF generators, and automated inventory spreadsheets exports.",
+    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "PDFKit", "XLSX", "Zod"],
+    impact: "Engineered automated billing generators and sales audit pipelines, eliminating invoice generation delays.",
+    icon: <ShoppingCart className="w-5 h-5 text-amber-400" />,
     demoUrl: "#",
     sourceUrl: "https://github.com/NajilRahman",
     isPrivate: true

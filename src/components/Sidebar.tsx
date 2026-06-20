@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink, ShieldCheck, Download } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, ShieldCheck, Download, MessageSquare } from 'lucide-react';
 import myImage from '../assets/myimage.jpg.jpeg';
 
 export const Sidebar: React.FC = () => {
@@ -115,15 +115,24 @@ export const Sidebar: React.FC = () => {
           </a>
         </div>
         
-        <a 
-          href="https://najilrahmanpm.netlify.app"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-mercury py-3 rounded-xl flex items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-wider font-semibold text-white/90"
-        >
-          Original Site
-          <ExternalLink className="w-3.5 h-3.5 opacity-60" />
-        </a>
+        <div className="flex gap-2">
+          <a 
+            href="https://wa.me/919048649412"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 btn-mercury py-3 rounded-xl flex items-center justify-center gap-1.5 font-mono text-[10px] uppercase tracking-wider font-semibold text-white/90"
+          >
+            <MessageSquare className="w-4 h-4 text-emerald-glow" />
+            WhatsApp
+          </a>
+          <a 
+            href="tel:+919048649412"
+            className="flex-1 btn-mercury py-3 rounded-xl flex items-center justify-center gap-1.5 font-mono text-[10px] uppercase tracking-wider font-semibold text-white/90"
+          >
+            <Phone className="w-4 h-4 text-sky-400" />
+            Call Me
+          </a>
+        </div>
       </div>
     </aside>
   );

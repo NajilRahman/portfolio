@@ -20,9 +20,6 @@ export const Sidebar: React.FC = () => {
               <ShieldCheck className="w-4 h-4 text-emerald-glow" />
             </div>
           </div>
-          <span className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-emerald-glow font-bold animate-pulse-slow">
-            SECURE ENGINE
-          </span>
         </div>
 
         {/* Ambient Hover Glow */}
@@ -31,14 +28,11 @@ export const Sidebar: React.FC = () => {
 
       {/* Info Stack */}
       <div className="flex flex-col gap-2">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center">
           <span className="font-mono text-[10px] text-graphite uppercase tracking-wider flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-glow animate-ping" />
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-glow absolute" />
             Available for Hire
-          </span>
-          <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white/70">
-            v1.2.0
           </span>
         </div>
         

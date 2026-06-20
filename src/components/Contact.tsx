@@ -5,19 +5,38 @@ export const Contact: React.FC = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) {
       setStatus('error');
       return;
     }
     setStatus('sending');
-    // Simulate API delay
-    setTimeout(() => {
-      setStatus('success');
-      setFormState({ name: '', email: '', message: '' });
-      setTimeout(() => setStatus('idle'), 4000);
-    }, 1500);
+
+    try {
+      const response = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok && data.success) {
+        setStatus('success');
+        setFormState({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 4000);
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      setStatus('error');
+    }
   };
 
   const handleResumeDownload = () => {

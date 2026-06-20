@@ -9,6 +9,7 @@ interface Project {
   icon: React.ReactNode;
   demoUrl: string;
   sourceUrl: string;
+  isPrivate?: boolean;
 }
 
 const projectsData: Project[] = [
@@ -19,7 +20,8 @@ const projectsData: Project[] = [
     impact: "Processed compliant monthly payroll for 150,000+ employees. Implemented worker clustering, boosting request throughput by 65%.",
     icon: <Server className="w-5 h-5 text-indigo-400" />,
     demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman"
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
   },
   {
     name: "Arnoc API (Gamified Car Wash Platform)",
@@ -28,7 +30,8 @@ const projectsData: Project[] = [
     impact: "Reduced duplicate backend logic by 40% through modular shared core architectures.",
     icon: <Car className="w-5 h-5 text-pink-400" />,
     demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman"
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
   },
   {
     name: "Attendance & Shift Booking API",
@@ -37,7 +40,8 @@ const projectsData: Project[] = [
     impact: "Eliminated reporting discrepancies to zero through geolocation-bound validation rules.",
     icon: <Calendar className="w-5 h-5 text-rose-400" />,
     demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman"
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
   },
   {
     name: "Lendit API (Multi-Tenant SaaS Rental Flow)",
@@ -46,7 +50,8 @@ const projectsData: Project[] = [
     impact: "Engineered secure tenant-isolated database models and middlewares for seamless organization onboarding.",
     icon: <Key className="w-5 h-5 text-amber-400" />,
     demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman"
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
   },
   {
     name: "Stocksigo API (Inventory & Billing Engine)",
@@ -55,7 +60,8 @@ const projectsData: Project[] = [
     impact: "Engineered real-time stock aggregation workflows and transaction logs, preventing data/billing mismatches.",
     icon: <ShoppingBag className="w-5 h-5 text-emerald-400" />,
     demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman"
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
   },
   {
     name: "Athenora API (LMS & Class Scheduler)",
@@ -64,7 +70,8 @@ const projectsData: Project[] = [
     impact: "Created modular REST endpoints for student-teacher sessions and cloud file/folder organization structures.",
     icon: <BookOpen className="w-5 h-5 text-sky-400" />,
     demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman"
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
   },
   {
     name: "AI-Assisted Customer Relationship Management",
@@ -73,7 +80,8 @@ const projectsData: Project[] = [
     impact: "Integrated local Ollama & OpenRouter models to automate qualitative lead triage and categorization.",
     icon: <Brain className="w-5 h-5 text-purple-400" />,
     demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman"
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
   },
   {
     name: "WebAuthn Passkey & SSO Handoff Gateway",
@@ -82,7 +90,8 @@ const projectsData: Project[] = [
     impact: "Replaced legacy credentials with Passkeys, cutting login latency by 50% and protecting session cookies.",
     icon: <Lock className="w-5 h-5 text-teal-400" />,
     demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman"
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
   }
 ];
 
@@ -208,25 +217,38 @@ export const Projects: React.FC = () => {
               </div>
 
               {/* Actions */}
-              <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-5 gap-3">
-                <button 
-                  onClick={() => triggerMockAlert(project.name)}
-                  className="btn-mercury-primary py-2 px-4 rounded-xl flex items-center justify-center gap-1.5 font-mono text-[10px] uppercase tracking-wider font-semibold text-white/90 cursor-pointer flex-1 min-w-[90px]"
-                >
-                  Live View
-                  <ExternalLink className="w-3 h-3 opacity-80" />
-                </button>
-                
-                <a 
-                  href={project.sourceUrl}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn-mercury py-2 px-4 rounded-xl flex items-center justify-center gap-1.5 font-mono text-[10px] uppercase tracking-wider font-semibold text-white/85 flex-1 min-w-[90px]"
-                >
-                  <Github className="w-3 h-3" />
-                  Code
-                </a>
-              </div>
+              {project.isPrivate ? (
+                <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-5 gap-3 w-full">
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-graphite bg-white/2 px-3 py-2 rounded-xl border border-white/5 flex items-center gap-1.5 flex-1 justify-center select-none opacity-60">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400/80" />
+                    Internal System
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-graphite bg-white/2 px-3 py-2 rounded-xl border border-white/5 flex items-center gap-1.5 flex-1 justify-center select-none opacity-60">
+                    <Lock className="w-3 h-3 text-graphite/80" />
+                    Private Repo
+                  </span>
+                </div>
+              ) : (
+                <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-5 gap-3">
+                  <button 
+                    onClick={() => triggerMockAlert(project.name)}
+                    className="btn-mercury-primary py-2 px-4 rounded-xl flex items-center justify-center gap-1.5 font-mono text-[10px] uppercase tracking-wider font-semibold text-white/90 cursor-pointer flex-1 min-w-[90px]"
+                  >
+                    Live View
+                    <ExternalLink className="w-3 h-3 opacity-80" />
+                  </button>
+                  
+                  <a 
+                    href={project.sourceUrl}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn-mercury py-2 px-4 rounded-xl flex items-center justify-center gap-1.5 font-mono text-[10px] uppercase tracking-wider font-semibold text-white/85 flex-1 min-w-[90px]"
+                  >
+                    <Github className="w-3 h-3" />
+                    Code
+                  </a>
+                </div>
+              )}
             </div>
 
             {/* Dynamic visual notification overlay */}

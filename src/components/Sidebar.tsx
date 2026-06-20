@@ -1,8 +1,17 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink, ShieldCheck, Download } from 'lucide-react';
 import myImage from '../assets/myimage.jpg.jpeg';
 
 export const Sidebar: React.FC = () => {
+  const handleResumeDownload = () => {
+    const a = document.createElement('a');
+    a.href = '/NAJIL_RAHMAN_PM.pdf';
+    a.download = 'Najil_Rahman_PM_Resume.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
   return (
     <aside className="glass-panel w-full lg:w-[320px] rounded-3xl p-6 lg:sticky lg:top-8 flex flex-col gap-6 select-none shrink-0 self-start">
       {/* Dynamic Profile Avatar Area */}
@@ -46,6 +55,15 @@ export const Sidebar: React.FC = () => {
           Luvid Technologies
         </p>
       </div>
+
+      {/* Resume Download CTA */}
+      <button
+        onClick={handleResumeDownload}
+        className="btn-mercury-primary py-3 px-4 rounded-xl flex items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-wider font-semibold text-white/95 cursor-pointer w-full"
+      >
+        <Download className="w-4.5 h-4.5 text-emerald-glow" />
+        Download CV / Resume
+      </button>
 
       {/* Value Proposition */}
       <p className="font-sans text-xs leading-relaxed text-graphite border-t border-white/5 pt-4">

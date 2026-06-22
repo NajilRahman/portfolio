@@ -31,7 +31,7 @@ const skillsData: SkillCategory[] = [
   {
     title: "Infrastructure & Tools",
     icon: <Wrench className="w-4 h-4 text-sky-400" />,
-    items: ["Domain Integration", "DNS Routing", "Git & GitHub", "Swagger Docs", "Postman APIs", "Ollama LLM", "OpenRouter AI"]
+    items: ["Docker (Basic)", "Domain Integration", "DNS Routing", "Git & GitHub", "Swagger Docs", "Postman APIs", "Ollama LLM", "OpenRouter AI"]
   }
 ];
 

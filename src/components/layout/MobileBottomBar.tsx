@@ -36,7 +36,7 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ activeSection,
     },
     {
       id: 'experience',
-      label: 'Career',
+      label: 'Timeline',
       icon: (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -55,26 +55,32 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ activeSection,
   ];
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 z-50 md:hidden pointer-events-auto flex justify-center">
-      <nav className="bg-[#121214]/95 backdrop-blur-2xl border border-[#222227] rounded-full p-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.9)] flex items-center justify-between w-full max-w-sm">
+    <div className="fixed bottom-3 left-3 right-3 z-50 md:hidden pointer-events-auto flex justify-center">
+      <nav className="bg-[#121214]/95 backdrop-blur-2xl border border-[#222227] rounded-2xl p-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.9)] flex items-center justify-around w-full max-w-sm relative overflow-hidden">
         {tabs.map((tab) => {
           const isActive = activeSection === tab.id;
           return (
             <button
               key={tab.id}
               onClick={() => onNavigate(tab.id)}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-full transition-all duration-300 cursor-pointer ${
+              className={`relative flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-all duration-300 cursor-pointer ${
                 isActive
-                  ? 'bg-[#7C5CFF] text-white font-bold shadow-lg shadow-[#7C5CFF]/30 scale-105'
-                  : 'text-[#A1A1AA] hover:text-white'
+                  ? 'bg-[#7C5CFF]/20 text-white font-bold border border-[#7C5CFF]/60 shadow-[0_0_15px_rgba(124,92,255,0.3)] scale-105'
+                  : 'text-[#A1A1AA] hover:text-white border border-transparent'
               }`}
             >
-              {tab.icon}
+              {/* Active Top Glow Bar Indicator */}
               {isActive && (
-                <span className="text-[11px] font-mono tracking-tight font-semibold">
-                  {tab.label}
-                </span>
+                <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-7 h-1 bg-[#7C5CFF] rounded-full shadow-[0_0_10px_#7C5CFF]" />
               )}
+
+              <div className="relative">
+                {tab.icon}
+              </div>
+
+              <span className={`text-[10px] font-mono tracking-tight mt-1 ${isActive ? 'text-white font-extrabold' : 'text-[#A1A1AA]'}`}>
+                {tab.label}
+              </span>
             </button>
           );
         })}

@@ -1,73 +1,52 @@
 import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface TextScrubRevealProps {
   text: string;
   className?: string;
-  highlightWords?: string[];
 }
 
-export const TextScrubReveal: React.FC<TextScrubRevealProps> = ({
-  text,
-  className = '',
-  highlightWords = [],
-}) => {
+export const TextScrubReveal: React.FC<TextScrubRevealProps> = ({ text, className = '' }) => {
   const containerRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    if (!containerRef.current) return;
 
-    const container = containerRef.current;
-    if (!container) return;
-
-    const wordElements = container.querySelectorAll('.scrub-word');
+    const words = containerRef.current.querySelectorAll('.scrub-word');
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        wordElements,
+        words,
         { opacity: 0.2 },
         {
           opacity: 1,
-          stagger: 0.08,
+          stagger: 0.05,
           ease: 'none',
           scrollTrigger: {
-            trigger: container,
+            trigger: containerRef.current,
             start: 'top 85%',
-            end: 'bottom 45%',
-            scrub: 0.4,
+            end: 'bottom 55%',
+            scrub: 0.8,
           },
         }
       );
-    }, container);
+    }, containerRef);
 
     return () => ctx.revert();
   }, [text]);
 
-  const words = text.split(' ');
+  const wordsArr = text.split(' ');
 
   return (
-    <p ref={containerRef} className={`font-sans leading-relaxed block ${className}`}>
-      {words.map((word, idx) => {
-        const cleanWord = word.replace(/[^a-zA-Z0-9]/g, '');
-        const isHighlighted = highlightWords.some(
-          (h) => h.toLowerCase() === cleanWord.toLowerCase()
-        );
-
-        return (
-          <span
-            key={idx}
-            className={`scrub-word inline-block transition-colors py-0.5 ${
-              isHighlighted
-                ? 'text-transparent bg-clip-text bg-gradient-to-r from-electric-indigo to-cyan-glow font-bold'
-                : 'text-white'
-            }`}
-            style={{ opacity: 0.2, marginRight: '0.3em' }}
-          >
-            {word}
-          </span>
-        );
-      })}
+    <p ref={containerRef} className={className}>
+      {wordsArr.map((word, idx) => (
+        <span key={idx} className="scrub-word inline-block mr-1.5 transition-opacity">
+          {word}
+        </span>
+      ))}
     </p>
   );
 };

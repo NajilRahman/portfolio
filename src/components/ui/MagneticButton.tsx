@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { soundFx } from '../../utils/soundEffects';
 
 interface MagneticButtonProps {
   children: React.ReactNode;
@@ -34,8 +35,17 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     setPosition({ x: distanceX, y: distanceY });
   };
 
+  const handleMouseEnter = () => {
+    soundFx.playHover();
+  };
+
   const handleMouseLeave = () => {
     setPosition({ x: 0, y: 0 });
+  };
+
+  const handleClick = () => {
+    soundFx.playClick();
+    if (onClick) onClick();
   };
 
   const Component = href ? 'a' : 'button';
@@ -44,6 +54,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     <div
       ref={btnRef}
       onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className="inline-block"
     >
@@ -52,7 +63,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
         target={target}
         rel={rel}
         title={title}
-        onClick={onClick}
+        onClick={handleClick}
         style={{
           transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
           transition: position.x === 0 ? 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)' : 'transform 0.1s ease-out',

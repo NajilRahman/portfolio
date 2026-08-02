@@ -20,7 +20,7 @@ export const TextScrubReveal: React.FC<TextScrubRevealProps> = ({ text, classNam
     const ctx = gsap.context(() => {
       gsap.fromTo(
         words,
-        { opacity: 0.2 },
+        { opacity: 0.4 },
         {
           opacity: 1,
           stagger: 0.05,
@@ -43,7 +43,7 @@ export const TextScrubReveal: React.FC<TextScrubRevealProps> = ({ text, classNam
   return (
     <p ref={containerRef} className={className}>
       {wordsArr.map((word, idx) => (
-        <span key={idx} className="scrub-word inline-block mr-1.5 transition-opacity">
+        <span key={idx} className="scrub-word inline-block mr-1.5 transition-opacity text-white">
           {word}
         </span>
       ))}

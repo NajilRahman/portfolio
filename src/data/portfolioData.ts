@@ -176,29 +176,28 @@ export const experienceData: Position[] = [
     isCurrent: false,
     logoBadge: "TRACK PI",
     logoUrl: trackpiLogo,
-    summary: "Completed a 3-month MERN Stack internship developing full-stack web applications, RESTful endpoints, and responsive user interfaces.",
+    summary: "Engineered Track Pi's in-house company website, administrative control panel, and core operational software systems using full-stack MERN architecture.",
     highlights: [
-      "Constructed custom MERN (MongoDB, Express.js, React.js, Node.js) web applications with secure JWT authentication and dynamic dashboards.",
-      "Engineered responsive UI components and state management flows connected to Express RESTful backend microservices.",
-      "Collaborated on database schema design, index optimization, and API integration testing."
+      "Built Track Pi's primary in-house website and administrative control panel featuring role-based access control and live data management tools.",
+      "Constructed custom MERN (MongoDB, Express.js, React.js, Node.js) software systems with secure JWT authentication and real-time operational dashboards.",
+      "Engineered responsive frontend interfaces and state management flows connected to modular Express RESTful backend microservices."
     ],
-    skillsUsed: ["MongoDB", "Express.js", "React.js", "Node.js", "REST APIs", "JavaScript", "Git"]
+    skillsUsed: ["MongoDB", "Express.js", "React.js", "Node.js", "REST APIs", "JavaScript", "Admin Panels", "Git"]
   },
   {
     company: "Luminar Technolab",
-    role: "MERN Stack Developer Trainee",
+    role: "MERN Stack Intern",
     location: "Kozhikode, Kerala, India",
-    period: "July 2024 – Sept. 2024",
+    period: "May 2024 – Dec. 2024",
     isCurrent: false,
     logoBadge: "LUMINAR",
     logoUrl: "https://www.luminartechnolab.com/static/assets/img/favicon.png",
-    summary: "Completed comprehensive MERN Stack development training building full-stack web applications, REST APIs, and database pipelines.",
+    summary: "Developed and deployed full-stack MERN applications with secure authentication and custom REST APIs.",
     highlights: [
-      "Engineered full-stack MERN web applications with secure authentication flows and custom RESTful endpoints.",
-      "Optimized database query performance, indexing, and MongoDB schema design across multi-table project pipelines.",
-      "Collaborated in Agile sprints to deliver production-ready code, clean UI components, and API integration tests."
+      "Developed and deployed full-stack MERN applications with secure authentication and custom REST APIs.",
+      "Optimized MongoDB/MySQL queries and collaborated in Agile teams to deliver production-ready features."
     ],
-    skillsUsed: ["MongoDB", "Express.js", "React.js", "Node.js", "REST APIs", "JavaScript", "Git"]
+    skillsUsed: ["MongoDB", "Express.js", "React.js", "Node.js", "REST APIs", "MySQL", "Git"]
   }
 ];
 

@@ -222,52 +222,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
         </div>
 
-        {/* CORE TECH STACK & ENGINEERING STRENGTHS BRANDING BAR */}
-        <div className="w-full my-8 p-6 sm:p-8 rounded-3xl bg-[#121214] border border-[#222227] shadow-xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-[#222227]">
-            <div className="flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#7C5CFF] animate-pulse" />
-              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-[#7C5CFF]">
-                Core Tech Stack &amp; Architectural Strengths
-              </h3>
-            </div>
-            <span className="text-xs font-mono text-[#E4E4E7]">
-              Full-Stack &bull; Microservices &bull; Production VPS Infrastructure
-            </span>
-          </div>
 
-          <div className="flex flex-wrap gap-2.5 sm:gap-3">
-            {[
-              { name: 'Node.js Cluster', category: 'Backend Engine' },
-              { name: 'TypeScript', category: 'Type Safety' },
-              { name: 'Next.js 14/15', category: 'Frontend UI' },
-              { name: 'Go (Golang)', category: 'High-Speed Microservice' },
-              { name: 'Express.js 5', category: 'RESTful APIs' },
-              { name: 'MongoDB Replica Sets', category: 'Databases' },
-              { name: 'Redis & BullMQ', category: 'Caching & Queues' },
-              { name: 'Linux VPS & Nginx', category: 'Cloud Infrastructure' },
-              { name: 'PM2 & Docker', category: 'Process Cluster' },
-              { name: 'WebAuthn (Passkeys)', category: 'Zero-Trust Security' },
-              { name: 'Socket.IO', category: 'Real-Time Sync' },
-              { name: 'Tailwind CSS v4', category: 'Design Systems' },
-              { name: 'Zod & Sharp', category: 'Validation & Media' },
-              { name: 'AG-Grid & FullCalendar', category: 'Enterprise Components' },
-            ].map((tech, idx) => (
-              <div
-                key={idx}
-                className="group flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#161619] border border-[#222227] hover:border-[#7C5CFF]/60 hover:bg-[#1C1C22] transition-all duration-300 cursor-default"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFF] group-hover:scale-150 transition-transform" />
-                <span className="text-xs font-mono text-white font-semibold group-hover:text-[#7C5CFF] transition-colors">
-                  {tech.name}
-                </span>
-                <span className="text-[10px] font-mono text-[#E4E4E7] hidden md:inline">
-                  &bull; {tech.category}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* High-Contrast Impact Metrics Bar */}
         <div

@@ -14,6 +14,8 @@ export const ProjectsShowcaseSection: React.FC = () => {
 
   const categories = [
     { id: 'all', label: 'All Works' },
+    { id: 'luvid', label: 'Luvid Technologies' },
+    { id: 'flumenx', label: 'FlumenX Projects' },
     { id: 'enterprise', label: 'Enterprise & ERP' },
     { id: 'healthcare', label: 'Healthcare CMS' },
     { id: 'fintech', label: 'FinTech & Lending' },
@@ -24,6 +26,10 @@ export const ProjectsShowcaseSection: React.FC = () => {
   const filteredProjects =
     activeCategory === 'all'
       ? projectsData
+      : activeCategory === 'luvid'
+      ? projectsData.filter((p) => p.company === 'Luvid Technologies')
+      : activeCategory === 'flumenx'
+      ? projectsData.filter((p) => p.company === 'FlumenX')
       : projectsData.filter((p) => p.category === activeCategory);
 
   // Lock body scroll when modal is open
@@ -79,7 +85,7 @@ export const ProjectsShowcaseSection: React.FC = () => {
             </h2>
           </div>
           <div className="text-sm font-mono text-[#E4E4E7]">
-            FlumenX & Full-Stack Projects ({projectsData.length})
+            Production Platforms ({projectsData.length})
           </div>
         </div>
 
@@ -124,12 +130,19 @@ export const ProjectsShowcaseSection: React.FC = () => {
 
                 {/* Top Badge */}
                 <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-mono bg-[#0B0B0C]/80 backdrop-blur-md text-[#7C5CFF] border border-[#7C5CFF]/40 font-bold shadow-sm">
-                    {project.category.toUpperCase()}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-full text-[11px] font-mono bg-[#0B0B0C]/80 backdrop-blur-md text-[#7C5CFF] border border-[#7C5CFF]/40 font-bold shadow-sm">
+                      {project.category.toUpperCase()}
+                    </span>
+                    {project.company && (
+                      <span className="px-2.5 py-1 rounded-full text-[10px] font-mono bg-[#7C5CFF]/20 text-[#A78BFA] border border-[#7C5CFF]/40 font-semibold">
+                        {project.company}
+                      </span>
+                    )}
+                  </div>
                   {project.isPrivate && (
                     <span className="px-2.5 py-1 rounded-full text-[10px] font-mono bg-[#161619]/90 text-[#E4E4E7] border border-[#222227]">
-                      CONFIDENTIAL / PROPRIETARY
+                      PROPRIETARY
                     </span>
                   )}
                 </div>

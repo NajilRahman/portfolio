@@ -35,8 +35,285 @@ export const profileData: ProfileData = {
 
 export const projectsData: Project[] = [
   {
+    id: "worksphere-payroll",
+    name: "WorkSphere Statutory Payroll & HRMS Engine",
+    company: "Luvid Technologies",
+    category: "enterprise",
+    tagline: "Multi-Tenant Statutory Payroll Processor & Go Microservice (150K+ Employees)",
+    description: "High-volume statutory payroll calculation engine, shift management, and workforce compliance processing platform built at Luvid Technologies (`D:\\luvidtechnologies\\projects\\worksphere-*`). Powered by a multi-threaded Go calculation microservice (`salary-processor-go`), CPU-aware Node.js worker clusters, and AG-Grid data tables for instant calculation of PF, ESI, overtime, vouchers, and statutory tax rules.",
+    technologies: ["Node.js", "Go", "Express.js", "TypeScript", "React", "Redux Toolkit", "AG-Grid", "MongoDB", "Redis"],
+    impact: "Processed compliant monthly statutory payroll for 150,000+ employees with zero calculation failures. Boosted request throughput by 65%.",
+    architecturePoints: [
+      "Dedicated multi-threaded Go statutory calculation microservice (`salary-processor-go`) integration",
+      "Node.js cluster worker distribution across multi-core CPU server instances",
+      "AG-Grid Enterprise integration handling 100,000+ employee records with real-time editing"
+    ],
+    iconName: "Server",
+    imageUrl: "/images/worksphere.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: true,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Scale", value: "150,000+ Employees" },
+      { label: "Throughput", value: "+65% Efficiency" }
+    ]
+  },
+  {
+    id: "ecosystem-suite",
+    name: "Ecosystem Suite (Auth, CRM & Flow E-Commerce)",
+    company: "Luvid Technologies",
+    category: "saas",
+    tagline: "Orchestrated Multi-Service Suite (Auth Gateway, CRM & Flow E-Commerce)",
+    description: "Unified enterprise microservice platform engineered at Luvid Technologies (`D:\\luvidtechnologies\\projects\\ecosystem-suite`). Integrates centralized OAuth2/SSO identity provider (`auth-api`/`auth-ui`), omnichannel CRM (`crm-api`/`crm-ui`), and the Flow E-Commerce & PDF reporting engine (`flow-api`/`flow-ui`) running concurrently with zero-trust session handoffs.",
+    technologies: ["Node.js", "Express.js 5", "TypeScript", "React", "Next.js", "PDFKit", "Zod", "MongoDB", "Redis", "Concurrently"],
+    impact: "Unified multi-domain corporate workflows into a single orchestrated ecosystem powered by shared zero-trust auth and automated PDF/XLSX export pipelines.",
+    architecturePoints: [
+      "Concurrently-orchestrated microservices stack spanning Auth, CRM, and Flow E-Commerce",
+      "Automated PDFKit invoice generation and Excel (XLSX) financial reporting pipelines",
+      "Shared zero-trust authentication handoffs across subdomains with HTTP-only tokens"
+    ],
+    iconName: "LayoutDashboard",
+    imageUrl: "/images/erp.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: true,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Architecture", value: "Microservices Suite" }
+    ]
+  },
+  {
+    id: "samay-scheduling",
+    name: "Samay Smart Shift Scheduling & Timekeeping PWA",
+    company: "Luvid Technologies",
+    category: "enterprise",
+    tagline: "Next.js 15 PWA Shift Roster & Automated Timecard Export Engine",
+    description: "Enterprise workforce shift allocation, leave approval, and attendance calculation PWA built at Luvid Technologies (`D:\\luvidtechnologies\\projects\\samay-*`). Engineered with Next.js 15, React 19, Radix UI, and AG-Grid Enterprise. Features client-side html2canvas & jsPDF pipelines for dynamic payslip and timecard generation.",
+    technologies: ["Next.js 15", "React 19", "Express.js 5", "TypeScript", "PWA", "Radix UI", "AG-Grid", "jsPDF", "MongoDB"],
+    impact: "Automated daily time tracking, rotational shift roster allocations, and instant PDF report exports for enterprise operations teams.",
+    architecturePoints: [
+      "Next.js 15 Progressive Web App (PWA) with offline caching & installable mobile shell",
+      "jsPDF & html2canvas client-side reporting pipeline for dynamic timecard generation",
+      "AG-Grid Enterprise & Radix UI data tables handling thousands of timekeeping logs"
+    ],
+    iconName: "Clock",
+    imageUrl: "/images/attendance.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: true,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Stack", value: "Next.js 15 + PWA" }
+    ]
+  },
+  {
+    id: "sso-identity-gateway",
+    name: "Centralized Zero-Trust SSO & Identity Gateway",
+    company: "Luvid Technologies",
+    category: "security",
+    tagline: "OAuth2 / FIDO2 WebAuthn Passwordless Identity Provider & Token Handoff Gateway",
+    description: "Centralized single sign-on (SSO) authentication gateway and zero-trust identity provider engineered at Luvid Technologies (`D:\\luvidtechnologies\\projects\\SSO`). Manages secure cross-domain JWT code exchanges, FIDO2 WebAuthn passkey authentication, SameSite HttpOnly cookie protection, and sliding-window rate limiting.",
+    technologies: ["Node.js", "Express.js", "TypeScript", "WebAuthn", "MongoDB", "JWT", "Redis", "Helmet"],
+    impact: "Secured enterprise microservices against session hijacking, credential sniffing, and brute-force vectors with token hand-offs.",
+    architecturePoints: [
+      "FIDO2 WebAuthn passkey biometric authentication flow",
+      "Encrypted HTTP-only SameSite cookie token exchange flow across domain boundaries",
+      "Leaky-bucket rate limiter defending against high-frequency brute-force attempts"
+    ],
+    iconName: "ShieldCheck",
+    imageUrl: "/images/sso_gateway.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: true,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Security Level", value: "Zero-Trust" }
+    ]
+  },
+  {
+    id: "enterprise-erp",
+    name: "Arnoc Multi-Tenant ERP & Shared Controller Engine",
+    company: "Luvid Technologies",
+    category: "enterprise",
+    tagline: "Multi-Tenant Core Operations, Procurement & Financial Accounting System",
+    description: "Comprehensive multi-tenant ERP platform managing enterprise procurement, vendor invoicing, financial ledgers, and multi-department approval workflows engineered at Luvid Technologies (`D:\\luvidtechnologies\\projects\\ERP`). Features modular controller factories that eliminate duplicate business logic.",
+    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "React", "Tailwind CSS", "Mongoose"],
+    impact: "Unified company-wide operational accounting, procurement tracking, and inventory ledgers while cutting duplicate backend logic by 40%.",
+    architecturePoints: [
+      "Modular controller factory architecture reducing duplicate business logic by 40%",
+      "Multi-tenant tenant isolation layer with DB connection pooling",
+      "Real-time ledger audit trails with compound Mongoose indexes"
+    ],
+    iconName: "LayoutDashboard",
+    imageUrl: "/images/erp.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: true,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Code Reuse", value: "+40%" }
+    ]
+  },
+  {
+    id: "labourjet-fleet",
+    name: "LabourJet On-Demand Field Worker Fleet System",
+    company: "Luvid Technologies",
+    category: "enterprise",
+    tagline: "Real-Time Field Labor Dispatch & Duty Verification Platform",
+    description: "On-demand labor deployment and field worker management system engineered at Luvid Technologies (`D:\\luvidtechnologies\\projects\\labourjet`). Features live Socket.IO push alerts for job allocation, Cloudinary image upload workflows, and Docker/Nginx production deployment.",
+    technologies: ["Node.js", "Express.js", "MongoDB", "Socket.IO", "Cloudinary", "Docker", "Nginx", "React"],
+    impact: "Digitized field labor dispatching and duty verification with real-time push alerts and automated worker allocation pipelines.",
+    architecturePoints: [
+      "Socket.IO real-time WebSocket dispatcher for sub-seconds job alerts",
+      "Dockerized microservice containers behind Nginx reverse proxy",
+      "Cloudinary automated image media optimization pipeline for ID verification"
+    ],
+    iconName: "Users",
+    imageUrl: "/images/ats.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: true,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Platform", value: "Real-Time Dispatch" }
+    ]
+  },
+  {
+    id: "superwell-healthcare",
+    name: "SuperWell Enterprise Healthcare Platform",
+    company: "Luvid Technologies",
+    category: "healthcare",
+    tagline: "Clinical Operations, FullCalendar Scheduler & Patient Portal",
+    description: "Comprehensive healthcare and clinical administration platform built at Luvid Technologies (`D:\\luvidtechnologies\\projects\\superwell-*`). Features FullCalendar appointment scheduling, patient EMR history, AG-Grid patient records, and multi-department consultation management.",
+    technologies: ["React 18", "Express.js", "TypeScript", "FullCalendar", "AG-Grid", "Redux Toolkit", "MongoDB"],
+    impact: "Centralized patient appointment schedules, clinical history ledgers, and doctor consultation workflows into a unified hospital system.",
+    architecturePoints: [
+      "FullCalendar interactive appointment scheduler with concurrency lock middleware",
+      "AG-Grid high-performance patient record tables handling complex medical data",
+      "Redux Toolkit centralized state management for multi-department workflows"
+    ],
+    iconName: "Stethoscope",
+    imageUrl: "/images/susrutha.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: false,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Domain", value: "Clinical CMS" }
+    ]
+  },
+  {
+    id: "fintech-lendit",
+    name: "LendIt FinTech Microfinance & Credit Engine",
+    company: "Luvid Technologies",
+    category: "fintech",
+    tagline: "Automated Credit Scoring, EMI Disbursement & Micro-Lending Portal",
+    description: "FinTech lending operations platform engineered at Luvid Technologies (`D:\\luvidtechnologies\\projects\\lendit-api`). Manages applicant credit scoring, automated loan approval matrices, EMI repayment schedules, and interest calculation pipelines.",
+    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "Redis", "Zod"],
+    impact: "Automated micro-loan verification, interest processing, and disbursement schedules with zero calculation discrepancies.",
+    architecturePoints: [
+      "Compound interest & EMI calculation engine with transactional database locks",
+      "Automated loan repayment schedule generator with Redis job queues",
+      "Strict Zod schema validation for all financial payloads"
+    ],
+    iconName: "ShieldCheck",
+    imageUrl: "/images/fintech.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: false,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Disbursement", value: "Automated EMI" }
+    ]
+  },
+  {
+    id: "stocksigo-inventory",
+    name: "StocksIgo Multi-Warehouse Stock & Expiry Control",
+    company: "Luvid Technologies",
+    category: "enterprise",
+    tagline: "Multi-Location Stock Movement Tracking & Batch Expiry Auditing Engine",
+    description: "High-concurrency stock tracking and warehouse inventory management system built at Luvid Technologies (`D:\\luvidtechnologies\\projects\\stocksigo-api`). Handles SKU barcode scanning, inter-warehouse stock transfers, minimum stock alert triggers, and batch expiry tracking.",
+    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "Redis", "BullMQ"],
+    impact: "Eliminated inventory stock-out incidents and automated batch expiry notifications across multiple regional fulfillment centers.",
+    architecturePoints: [
+      "Atomic stock increment/decrement operations preventing race conditions",
+      "Real-time stock threshold alert dispatcher via Redis BullMQ queues",
+      "High-speed SKU lookup indexes for instant barcode scanning"
+    ],
+    iconName: "Server",
+    imageUrl: "/images/inventory.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: false,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Tracking", value: "Real-Time Barcode" }
+    ]
+  },
+  {
+    id: "omnichannel-crm",
+    name: "Arnoc Omnichannel Lead CRM & Marketing Engine",
+    company: "Luvid Technologies",
+    category: "crm",
+    tagline: "Automated Campaign Nurturing, Lead Scoring & Sales Funnel Analytics",
+    description: "Customer Relationship Management (CRM) & marketing automation platform built at Luvid Technologies (`D:\\luvidtechnologies\\projects\\arnoc marketing`). Features automated lead capturing, pipeline staging, campaign tracking, and multi-channel notification dispatchers.",
+    technologies: ["Node.js", "TypeScript", "React", "Express.js", "MongoDB", "Socket.IO"],
+    impact: "Accelerated lead conversion rates and sales pipeline visibility with real-time lead score calculation engines.",
+    architecturePoints: [
+      "Automated lead scoring pipeline trigger based on customer interactions",
+      "Socket.IO live push notifications for sales team assignment alerts",
+      "Dynamic lead filter builder with MongoDB aggregation pipelines"
+    ],
+    iconName: "Users",
+    imageUrl: "/images/crm.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: false,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Pipeline", value: "Real-Time CRM" }
+    ]
+  },
+  {
+    id: "rentalflow-property",
+    name: "RentalFlow Property & Lease Management System",
+    company: "Luvid Technologies",
+    category: "enterprise",
+    tagline: "Smart Property Rental Management & Tenant Ledger System",
+    description: "Real estate property rental & asset management engine built at Luvid Technologies (`D:\\luvidtechnologies\\projects\\rentalflow-app`). Manages tenant lease contracts, automated rent payment reminders, maintenance requests, and unit availability analytics.",
+    technologies: ["Node.js", "Express.js", "React", "TypeScript", "MongoDB", "Tailwind CSS"],
+    impact: "Automated tenant billing, lease expiry tracking, and property maintenance dispatches across residential and commercial units.",
+    architecturePoints: [
+      "Lease agreement ledger with automated payment due calculations",
+      "Unit availability state machine with instant booking locks",
+      "Maintenance ticket dispatch system with photo attachments"
+    ],
+    iconName: "LayoutDashboard",
+    imageUrl: "/images/erp.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: false,
+    stats: [
+      { label: "Company", value: "Luvid Technologies" },
+      { label: "Domain", value: "PropTech" }
+    ]
+  },
+  {
     id: "masters-expo",
     name: "Real-Time Event Marketing & Campaign Command Center (CMS)",
+    company: "FlumenX",
     category: "enterprise",
     tagline: "Real-Time Operations & Campaign Command Platform (FlumenX)",
     description: "Real-time event marketing & campaign management operations center engineered at FlumenX using Next.js 14 and Express. Features real-time Socket.IO synchronization, multi-tier role-based page/menu authorization rules, deliverable task workflows, and live KPI/budget analytics.",
@@ -61,6 +338,7 @@ export const projectsData: Project[] = [
   {
     id: "susrutha",
     name: "Enterprise Healthcare CMS & Inpatient Patient Portal",
+    company: "FlumenX",
     category: "healthcare",
     tagline: "Research Hospital Operating Engine & Inpatient Patient Portal (FlumenX)",
     description: "Enterprise hospital management platform & patient web engine engineered at FlumenX for a 40-bed research-backed hospital. Features multi-branch OPD slot booking, tele-consultation workflows, Panchakarma therapy catalog, and a full-featured CMS admin panel with automated media processing pipelines.",
@@ -80,198 +358,6 @@ export const projectsData: Project[] = [
     stats: [
       { label: "Company", value: "FlumenX" },
       { label: "Capacity", value: "40 Beds" }
-    ]
-  },
-  {
-    id: "worksphere-payroll",
-    name: "High-Throughput Statutory Payroll & HRMS Engine",
-    category: "enterprise",
-    tagline: "Multi-Tenant Payroll Processor & Worker Clustering Pipeline (150K+ Employees)",
-    description: "High-volume statutory payroll calculation engine, shift management, and workforce compliance processing pipeline. Built CPU-aware worker clustering, Redis caching layers, and Go execution microservices for fast calculation of PF, ESI, overtime, vouchers, and statutory tax rules.",
-    technologies: ["Node.js", "Go", "Express.js", "TypeScript", "MongoDB", "Redis", "Worker Threads"],
-    impact: "Processed compliant monthly statutory payroll for 150,000+ employees with zero calculation failures. Boosted throughput by 65%.",
-    architecturePoints: [
-      "Multi-threaded Go statutory calculation engine (`salary-processor-go`) integration",
-      "Node.js cluster workers distribution across multi-core CPU instances",
-      "Redis memory caching for recurring employee tax & compliance lookups"
-    ],
-    iconName: "Server",
-    imageUrl: "/images/worksphere.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: true,
-    stats: [
-      { label: "Scale", value: "150,000+ Employees" },
-      { label: "Throughput", value: "+65% Efficiency" }
-    ]
-  },
-  {
-    id: "sso-identity-gateway",
-    name: "Centralized Zero-Trust SSO & Identity Gateway",
-    category: "security",
-    tagline: "OAuth2 / WebAuthn Passwordless Identity Provider & Token Handoff Gateway",
-    description: "Centralized single sign-on (SSO) authentication gateway and zero-trust identity provider. Manages secure cross-domain JWT code exchanges, FIDO2 WebAuthn passkey authentication, SameSite HttpOnly cookie protection, and sliding-window rate limiting.",
-    technologies: ["Node.js", "Express.js", "TypeScript", "WebAuthn", "MongoDB", "JWT", "Redis"],
-    impact: "Secured enterprise microservices against session hijacking, credential sniffing, and brute-force vectors with token hand-offs.",
-    architecturePoints: [
-      "FIDO2 WebAuthn passkey biometric authentication flow",
-      "Encrypted HTTP-only SameSite cookie token exchange flow across domain boundaries",
-      "Leaky-bucket rate limiter defending against high-frequency brute-force attempts"
-    ],
-    iconName: "ShieldCheck",
-    imageUrl: "/images/sso_gateway.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: true,
-    stats: [
-      { label: "Security Level", value: "Zero-Trust" },
-      { label: "Auth Protocol", value: "WebAuthn + SSO" }
-    ]
-  },
-  {
-    id: "enterprise-erp",
-    name: "Multi-Tenant Enterprise Resource Planning System (ERP)",
-    category: "enterprise",
-    tagline: "Core Operations, Inventory Management & Financial Accounting Platform",
-    description: "Comprehensive multi-tenant ERP platform managing enterprise procurement, vendor invoicing, financial ledgers, and multi-department approval workflows with strict role-based access control.",
-    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "React", "Tailwind CSS"],
-    impact: "Unified company-wide operational accounting, procurement tracking, and inventory ledgers into a single centralized microservice system.",
-    architecturePoints: [
-      "Modular controller factory architecture reducing duplicate business logic by 40%",
-      "Multi-tenant tenant isolation layer with DB connection pooling",
-      "Real-time ledger audit trails with compound Mongoose indexes"
-    ],
-    iconName: "LayoutDashboard",
-    imageUrl: "/images/erp.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: true,
-    stats: [
-      { label: "Architecture", value: "Multi-Tenant ERP" },
-      { label: "Code Reuse", value: "+40%" }
-    ]
-  },
-  {
-    id: "omnichannel-crm",
-    name: "Omnichannel Digital Marketing & Lead CRM System",
-    category: "crm",
-    tagline: "Automated Campaign Nurturing, Lead Scoring & Sales Funnel Analytics",
-    description: "Customer Relationship Management (CRM) & marketing automation platform featuring automated lead capturing, pipeline staging, campaign tracking, and multi-channel notification dispatchers.",
-    technologies: ["Node.js", "TypeScript", "React", "Express.js", "MongoDB", "Socket.IO"],
-    impact: "Accelerated lead conversion rates and sales pipeline visibility with real-time lead score calculation engines.",
-    architecturePoints: [
-      "Automated lead scoring pipeline trigger based on customer interactions",
-      "Socket.IO live push notifications for sales team assignment alerts",
-      "Dynamic lead filter builder with MongoDB aggregation pipelines"
-    ],
-    iconName: "Users",
-    imageUrl: "/images/crm.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: false,
-    stats: [
-      { label: "System", value: "Lead CRM" },
-      { label: "Pipeline", value: "Real-Time Nurturing" }
-    ]
-  },
-  {
-    id: "fintech-lendit",
-    name: "FinTech Microfinance & Peer-to-Peer Credit Engine",
-    category: "fintech",
-    tagline: "Automated Credit Scoring, EMI Disbursement & Micro-Lending Portal",
-    description: "FinTech lending operations platform managing applicant credit scoring, automated loan approval matrices, EMI repayment schedules, and interest calculation pipelines.",
-    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "Redis", "Zod"],
-    impact: "Automated micro-loan verification, interest processing, and disbursement schedules with zero calculation discrepancies.",
-    architecturePoints: [
-      "Compound interest & EMI calculation engine with transactional database locks",
-      "Automated loan repayment schedule generator with Redis job queues",
-      "Strict financial audit logging middleware"
-    ],
-    iconName: "ShieldCheck",
-    imageUrl: "/images/fintech.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: false,
-    stats: [
-      { label: "Domain", value: "FinTech Microfinance" },
-      { label: "Disbursement", value: "Automated EMI" }
-    ]
-  },
-  {
-    id: "applicant-tracking-ats",
-    name: "AI-Powered Applicant Tracking & Recruitment Engine (ATS)",
-    category: "enterprise",
-    tagline: "Automated Candidate Sourcing, Resume Parsing & Interview Pipeline",
-    description: "Enterprise talent acquisition engine for managing job postings, candidate resume ingestion, automated candidate scoring, and multi-stage interview scheduling workflows.",
-    technologies: ["Node.js", "TypeScript", "Express.js", "MongoDB", "React"],
-    impact: "Streamlined corporate recruitment pipelines, cutting candidate screening turnaround times significantly.",
-    architecturePoints: [
-      "Resume metadata extraction and candidate scoring pipeline",
-      "Multi-stage Kanban interview state machine with role-based evaluation guards",
-      "Automated candidate email dispatch triggers"
-    ],
-    iconName: "Users",
-    imageUrl: "/images/ats.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: false,
-    stats: [
-      { label: "System", value: "Recruitment ATS" },
-      { label: "Pipeline", value: "Automated Hiring" }
-    ]
-  },
-  {
-    id: "stockflow-inventory",
-    name: "Real-Time Stock Flow & Multi-Warehouse Inventory Control System",
-    category: "enterprise",
-    tagline: "Multi-Location Stock Movement Tracking & Batch Expiry Auditing Engine",
-    description: "High-concurrency stock tracking and warehouse inventory management system. Handles SKU barcode scanning, inter-warehouse stock transfers, minimum stock alert triggers, and batch expiry tracking.",
-    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "Redis"],
-    impact: "Eliminated inventory stock-out incidents and automated batch expiry notifications across multiple regional fulfillment centers.",
-    architecturePoints: [
-      "Atomic stock increment/decrement operations preventing race conditions",
-      "Real-time stock threshold alert dispatcher via Redis BullMQ queues",
-      "High-speed SKU lookup indexes for instant barcode scanning"
-    ],
-    iconName: "Server",
-    imageUrl: "/images/inventory.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: false,
-    stats: [
-      { label: "System", value: "Warehouse Inventory" },
-      { label: "Tracking", value: "Real-Time SKU" }
-    ]
-  },
-  {
-    id: "attendance-scheduling",
-    name: "Biometric Attendance & Shift Scheduling Management Engine",
-    category: "enterprise",
-    tagline: "Geofenced Mobile Attendance Verification & Auto-Shift Allocation System",
-    description: "Biometric and location-verified employee timekeeping engine. Syncs hardware biometric logs, geofenced GPS check-ins, rotational shift rosters, and leave request balance calculations.",
-    technologies: ["Node.js", "TypeScript", "Express.js", "MongoDB", "Socket.IO"],
-    impact: "Automated daily time tracking and overtime computation for thousands of shift-workers with real-time manager approval portals.",
-    architecturePoints: [
-      "Biometric hardware device log ingestion API endpoint",
-      "Geofence distance radius check algorithm for mobile clock-ins",
-      "Rotational shift roster allocation algorithm"
-    ],
-    iconName: "Users",
-    imageUrl: "/images/attendance.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: false,
-    stats: [
-      { label: "System", value: "Biometric Timekeeping" },
-      { label: "Verification", value: "Geofence + Hardware" }
     ]
   }
 ];

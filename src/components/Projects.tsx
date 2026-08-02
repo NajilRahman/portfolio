@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { ExternalLink, Github, Database, Brain, Lock, Server, Car, Calendar, ShoppingBag, BookOpen, Key, ShieldCheck, Users, ShoppingCart } from 'lucide-react';
+import { ExternalLink, Github, Database, Brain, Lock, Server, Car, Calendar, ShoppingBag, BookOpen, Key, ShieldCheck, Users, ShoppingCart, LayoutDashboard, Stethoscope } from 'lucide-react';
 
 interface Project {
   name: string;
@@ -13,6 +13,26 @@ interface Project {
 }
 
 const projectsData: Project[] = [
+  {
+    name: "Masters Expo Campaign Command Center",
+    description: "Real-time event marketing & campaign management operations center built with Next.js 14 and Express. Features real-time Socket.IO synchronization, multi-tier role-based page/menu authorization rules, deliverable task workflows, and live KPI/budget analytics.",
+    technologies: ["Next.js 14", "React", "TypeScript", "Node.js", "Express.js", "MongoDB", "Socket.IO", "Zustand", "Chart.js", "Tailwind CSS"],
+    impact: "Streamlined live event operations with real-time push alerts, dynamic campaign KPI tracking, and permission-controlled asset workflows.",
+    icon: <LayoutDashboard className="w-5 h-5 text-cyan-400" />,
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
+  },
+  {
+    name: "SUSRUTHA Healthcare CMS & Patient Portal",
+    description: "Enterprise hospital management platform & patient web engine for a 40-bed research-backed hospital. Features multi-branch OPD slot booking, tele-consultation workflows, Panchakarma therapy catalog, and a full-featured CMS admin panel with automated media processing pipelines.",
+    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "Next.js 14", "React", "Sharp", "Zod", "Swagger", "Tailwind CSS"],
+    impact: "Digitized inpatient inquiries, Panchakarma care package workflows, and multi-branch doctor schedules with automated video/image compression.",
+    icon: <Stethoscope className="w-5 h-5 text-teal-400" />,
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true
+  },
   {
     name: "Worksphere API (HRMS & Payroll Platform)",
     description: "High-volume salary calculation, shift scheduling, and statutory compliance pipeline. Engineered high-throughput MongoDB data models, aggregation pipelines, and CPU-aware worker clustering to optimize background processing.",
@@ -213,7 +233,7 @@ export const Projects: React.FC = () => {
                   </h3>
                 </div>
                 <span className="font-mono text-[9px] text-graphite/40 uppercase tracking-widest mt-1">
-                  0{idx + 1}
+                  {(idx + 1).toString().padStart(2, '0')}
                 </span>
               </div>
 

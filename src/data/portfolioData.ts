@@ -4,18 +4,18 @@ import trackpiLogo from '../assets/trackpi-logo.png';
 
 export const profileData: ProfileData = {
   name: "Najil Rahman P M",
-  title: "Senior Web Developer",
+  title: "IT Team Lead & Senior Web Developer",
   company: "FlumenX",
   location: "Kerala, India",
-  availability: "Senior Web Developer @ FlumenX • Open for High-Impact Software Engineering Roles",
+  availability: "IT Team Lead & Senior Web Developer @ FlumenX • Open for High-Impact Software Engineering Roles",
   email: "najilrahmanpm@gmail.com",
   phone: "+91 9048649412",
   github: "https://github.com/NajilRahman",
   linkedin: "https://linkedin.com/in/najilrahmanpm",
   whatsapp: "https://wa.me/919048649412",
   bio: [
-    "I am a Senior Web Developer at FlumenX, specializing in architecting high-throughput full-stack platforms, cloud server infrastructure (Linux VPS, Nginx, PM2), and zero-trust security layers.",
-    "Currently leading core web engineering at FlumenX, I build enterprise solutions like the Masters Expo Campaign Command Center and SUSRUTHA Healthcare CMS, while managing production Linux VPS cloud hosting and Nginx reverse proxies.",
+    "I am the IT Team Lead & Senior Web Developer at FlumenX, specializing in architecting high-throughput full-stack platforms, cloud server infrastructure (Linux VPS, Nginx, PM2), and zero-trust security layers.",
+    "As IT Team Lead at FlumenX, I direct core web engineering and infrastructure, building enterprise solutions like the Masters Expo Campaign Command Center and SUSRUTHA Healthcare CMS while managing production Linux VPS cloud hosting.",
     "Over my career across FlumenX, Luvid Technologies, Track Pi, and Luminar Technolab, I've constructed statutory calculation engines for 150,000+ employees, zero-trust WebAuthn passkey security layers, and scalable cloud architectures."
   ],
   metrics: [
@@ -135,20 +135,21 @@ export const projectsData: Project[] = [
 export const experienceData: Position[] = [
   {
     company: "FlumenX",
-    role: "Senior Web Developer",
+    role: "IT Team Lead & Senior Web Developer",
     location: "Kerala, India",
     period: "July 2026 – Present",
     isCurrent: true,
     logoBadge: "FLUMENX",
     logoUrl: flumenxLogo,
-    summary: "Leading senior web engineering, full-stack application development, and production Linux VPS server hosting infrastructure (Nginx, PM2, SSL/TLS, reverse proxies) for enterprise clients.",
+    summary: "Serving as IT Team Lead & Senior Web Developer, directing engineering team operations, web architecture, full-stack application development, and production Linux VPS server hosting infrastructure (Nginx, PM2, SSL/TLS, reverse proxies) for enterprise clients.",
     highlights: [
+      "Directed IT team engineering workflows, architecture decisions, code reviews, and production server deployments across client initiatives at FlumenX.",
       "Architected and deployed enterprise platforms including the Masters Expo Campaign Command Center (Next.js 14, Express, Socket.IO) and SUSRUTHA Healthcare CMS & Patient Portal (Node.js, Express, MongoDB, Sharp).",
       "Configured production Linux VPS server hosting environments, setting up Nginx reverse proxy routing, PM2 cluster process management, SSL/TLS security certificates, and UFW firewall rules.",
       "Spearheaded senior web engineering standards, automated deployment pipelines, and high-performance frontend/backend architectures across client projects.",
       "Optimized cloud server memory management, database indexing, and domain DNS routing to maintain 99.9% uptime and zero-downtime deployments."
     ],
-    skillsUsed: ["Next.js 14", "Express.js", "TypeScript", "MongoDB", "Linux VPS", "Nginx", "PM2", "Socket.IO", "SSL/TLS", "Sharp"]
+    skillsUsed: ["IT Team Leadership", "Next.js 14", "Express.js", "TypeScript", "MongoDB", "Linux VPS", "Nginx", "PM2", "Socket.IO", "SSL/TLS", "Sharp"]
   },
   {
     company: "Luvid Technologies",

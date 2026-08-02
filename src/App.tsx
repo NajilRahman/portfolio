@@ -5,6 +5,7 @@ import { HeaderNav } from './components/layout/HeaderNav';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 import { SpotlightCursor } from './components/ui/SpotlightCursor';
 import SplashCursor from './components/ui/SplashCursor';
+import { SplashScreen } from './components/ui/SplashScreen';
 import { HeroSection } from './components/sections/HeroSection';
 import { AboutSection } from './components/sections/AboutSection';
 import { ProjectsShowcaseSection } from './components/sections/ProjectsShowcaseSection';
@@ -55,6 +56,9 @@ function App() {
     <SmoothScroll>
       <div className="relative min-h-screen bg-[#0B0B0C] text-[#F4F4F6] font-sans select-none overflow-x-hidden">
         
+        {/* Luxury Intro Splash Preloader */}
+        <SplashScreen />
+
         {/* React Bits Fluid WebGL Splash Cursor */}
         <SplashCursor
           SIM_RESOLUTION={128}

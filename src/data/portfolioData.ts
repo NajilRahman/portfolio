@@ -240,9 +240,9 @@ export const skillCategoriesData: SkillCategory[] = [
     items: [
       { name: "WebAuthn (Passkeys)", level: "Advanced", usage: "FIDO2 biometric passwordless authentication flows", logoSlug: "auth0" },
       { name: "JWT Session Gateway", level: "Expert", usage: "Encrypted token hand-offs & SameSite HttpOnly cookie shields", logoSlug: "jsonwebtokens" },
-      { name: "RBAC & ABAC Guards", level: "Expert", usage: "Attribute & role-based middleware guards for enterprise menus", logoSlug: "shield" },
+      { name: "RBAC & ABAC Guards", level: "Expert", usage: "Attribute & role-based middleware guards for enterprise menus", logoSlug: "letsencrypt" },
       { name: "API Rate Limiting", level: "Advanced", usage: "Leaky-bucket & sliding window rate limits preventing brute-force", logoSlug: "fastapi" },
-      { name: "SSO Handoff Protocol", level: "Advanced", usage: "Cross-domain session delegation defeating session hijacking", logoSlug: "authy" }
+      { name: "SSO Handoff Protocol", level: "Advanced", usage: "Cross-domain session delegation defeating session hijacking", logoSlug: "auth0" }
     ]
   },
   {
@@ -269,7 +269,7 @@ export const skillCategoriesData: SkillCategory[] = [
       { name: "Tailwind CSS v4", level: "Expert", usage: "Custom design token systems, glassmorphic utilities & responsive grids", logoSlug: "tailwindcss" },
       { name: "GSAP & ScrollTrigger", level: "Advanced", usage: "Kinetic scroll reveals, timeline animations & parallax depth", logoSlug: "greensock" },
       { name: "Framer Motion", level: "Advanced", usage: "Physics-based layout transitions & gesture motion", logoSlug: "framer" },
-      { name: "Lenis Smooth Scroll", level: "Advanced", usage: "Butter-smooth momentum scrolling and camera inertia", logoSlug: "vibe" }
+      { name: "Lenis Smooth Scroll", level: "Advanced", usage: "Butter-smooth momentum scrolling and camera inertia", logoSlug: "framer" }
     ]
   }
 ];

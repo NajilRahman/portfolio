@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projectsData } from '../../data/portfolioData';
 import type { Project } from '../../types/portfolio';
 import { IconArrowUpRight, IconGithub } from '../ui/MinimalIcons';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const ProjectsShowcaseSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const categories = [
     { id: 'all', label: 'All Works' },
@@ -20,8 +25,32 @@ export const ProjectsShowcaseSection: React.FC = () => {
       ? projectsData
       : projectsData.filter((p) => p.category === activeCategory);
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>('.project-card');
+      cards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+            },
+          }
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [activeCategory]);
+
   return (
-    <section id="projects" className="py-24 sm:py-32 border-t border-[#1E1E24] relative z-10">
+    <section id="projects" ref={containerRef} className="py-24 sm:py-32 border-t border-[#1E1E24] relative z-10">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
         
         {/* Section Header */}
@@ -61,7 +90,7 @@ export const ProjectsShowcaseSection: React.FC = () => {
           {filteredProjects.map((project) => (
             <article
               key={project.id}
-              className="group relative rounded-2xl bg-[#121214] border border-[#1E1E24] overflow-hidden flex flex-col justify-between transition-all duration-500 hover:border-[#7C5CFF]/50"
+              className="project-card group relative rounded-2xl bg-[#121214] border border-[#1E1E24] overflow-hidden flex flex-col justify-between transition-all duration-500 hover:border-[#7C5CFF]/50"
             >
               {/* Project Image Preview Container */}
               <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-[#161619]">

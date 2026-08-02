@@ -1,9 +1,61 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { experienceData } from '../../data/portfolioData';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const ExperienceTimelineSection: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Timeline Line Drawing Animation
+      if (pathRef.current) {
+        const pathLength = pathRef.current.getTotalLength();
+        gsap.set(pathRef.current, {
+          strokeDasharray: pathLength,
+          strokeDashoffset: pathLength,
+        });
+
+        gsap.to(pathRef.current, {
+          strokeDashoffset: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 70%',
+            end: 'bottom 60%',
+            scrub: 0.8,
+          },
+        });
+      }
+
+      // Card Stagger Fade-In
+      const cards = gsap.utils.toArray<HTMLElement>('.experience-card');
+      cards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+            },
+          }
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="experience" className="py-24 sm:py-32 border-t border-[#1E1E24] relative z-10">
+    <section id="experience" ref={containerRef} className="py-24 sm:py-32 border-t border-[#1E1E24] relative z-10">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
         
         {/* Section Header */}
@@ -22,9 +74,23 @@ export const ExperienceTimelineSection: React.FC = () => {
         </div>
 
         {/* Vertical Timeline Container */}
-        <div className="relative pl-6 sm:pl-10 space-y-16 border-l border-[#1E1E24]">
+        <div className="relative pl-6 sm:pl-10 space-y-16">
+          
+          {/* Animated SVG Connecting Line */}
+          <div className="absolute left-[7px] sm:left-[11px] top-3 bottom-3 w-[2px] pointer-events-none">
+            <svg className="w-full h-full" preserveAspectRatio="none">
+              <path
+                ref={pathRef}
+                d="M 1 0 V 1000"
+                fill="none"
+                stroke="#7C5CFF"
+                strokeWidth="2"
+              />
+            </svg>
+          </div>
+
           {experienceData.map((exp, idx) => (
-            <div key={idx} className="relative group">
+            <div key={idx} className="experience-card relative group">
               
               {/* Timeline Node Point */}
               <div

@@ -1,4 +1,5 @@
 import React from 'react';
+import { soundFx } from '../../utils/soundEffects';
 
 interface MobileBottomBarProps {
   activeSection: string;
@@ -6,6 +7,11 @@ interface MobileBottomBarProps {
 }
 
 export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ activeSection, onNavigate }) => {
+  const handleTabClick = (sectionId: string) => {
+    soundFx.playClick();
+    onNavigate(sectionId);
+  };
+
   const tabs = [
     {
       id: 'hero',
@@ -62,7 +68,8 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ activeSection,
           return (
             <button
               key={tab.id}
-              onClick={() => onNavigate(tab.id)}
+              onClick={() => handleTabClick(tab.id)}
+              onMouseEnter={() => soundFx.playHover()}
               className={`relative flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-all duration-300 cursor-pointer ${
                 isActive
                   ? 'bg-[#7C5CFF]/20 text-white font-bold border border-[#7C5CFF]/60 shadow-[0_0_15px_rgba(124,92,255,0.3)] scale-105'

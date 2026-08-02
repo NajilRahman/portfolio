@@ -1,16 +1,30 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { profileData } from '../../data/portfolioData';
 import { MagneticButton } from '../ui/MagneticButton';
 import { IconArrowUpRight, IconChevronDown, IconMapPin, IconShield } from '../ui/MinimalIcons';
+import { RulerCarousel, type CarouselItem } from '../ui/ruler-carousel';
+
 import heroPortrait from '../../assets/hero-portrait.jpg';
+import myImage from '../../assets/myimage.jpg.jpeg';
+import aboutDesk from '../../assets/about-desk.jpg';
+import architectureWorkspace from '../../assets/architecture-workspace.jpg';
+import contactHeadshot from '../../assets/contact-headshot.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface HeroSectionProps {
   onNavigate: (sectionId: string) => void;
 }
+
+const galleryImages = [
+  { src: heroPortrait, label: "Executive Portrait", tag: "FlumenX IT Team Lead" },
+  { src: myImage, label: "Engineering Lead", tag: "Full-Stack Specialist" },
+  { src: aboutDesk, label: "Developer Workspace", tag: "System Architecture" },
+  { src: architectureWorkspace, label: "Platform Operations", tag: "Linux VPS & Nginx" },
+  { src: contactHeadshot, label: "Professional Profile", tag: "Available for Hire" },
+];
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,6 +34,77 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const ctaRef = useRef<HTMLDivElement>(null);
   const portraitFrameRef = useRef<HTMLDivElement>(null);
   const portraitImageRef = useRef<HTMLImageElement>(null);
+
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+
+  const heroCarouselItems: CarouselItem[] = [
+    {
+      id: 1,
+      title: "FLUMENX",
+      subtitle: "IT Team Lead & Senior Web Developer",
+      badge: "Current Leadership • 2026 – Present",
+      detail: "Directing engineering team operations, web architecture decisions, full-stack platform development, and production Linux VPS server hosting (Nginx, PM2, SSL/TLS, reverse proxies).",
+      tech: ["Linux VPS", "Nginx", "PM2", "Next.js 14", "React 19", "TypeScript", "Node.js"],
+      stats: [{ label: "Role", value: "IT Team Lead" }, { label: "Uptime", value: "99.9%" }],
+      actionLabel: "View Timeline",
+      onAction: () => onNavigate('experience'),
+    },
+    {
+      id: 2,
+      title: "LUVID TECHNOLOGIES",
+      subtitle: "Junior Software Engineer",
+      badge: "Core Auth & Microservices",
+      detail: "Architected statutory compliance calculation engine processing monthly payroll for 150,000+ employees, zero-trust WebAuthn passkey auth layers, and multi-tenant ERP platforms.",
+      tech: ["Node.js", "Express", "TypeScript", "MongoDB", "Redis", "WebAuthn", "RBAC/ABAC"],
+      stats: [{ label: "Employees", value: "150K+" }, { label: "Throughput", value: "+65%" }],
+      actionLabel: "View Experience",
+      onAction: () => onNavigate('experience'),
+    },
+    {
+      id: 3,
+      title: "TRACK PI",
+      subtitle: "MERN Stack Developer",
+      badge: "Enterprise In-House Systems",
+      detail: "Engineered Track Pi's in-house corporate website, administrative control panel, role-based access rules, and core operational software systems using MERN architecture.",
+      tech: ["MongoDB", "Express", "React.js", "Node.js", "REST APIs", "JWT", "Git"],
+      stats: [{ label: "Domain", value: "MERN Stack" }, { label: "System", value: "Admin Panel" }],
+      actionLabel: "View Experience",
+      onAction: () => onNavigate('experience'),
+    },
+    {
+      id: 4,
+      title: "LUMINAR TECHNOLAB",
+      subtitle: "MERN Stack Intern",
+      badge: "Full-Stack Software Development",
+      detail: "Developed and deployed full-stack MERN web applications with secure authentication, custom REST APIs, and database aggregation pipelines.",
+      tech: ["MongoDB", "Express", "React.js", "Node.js", "MySQL", "REST APIs"],
+      stats: [{ label: "Stack", value: "MERN" }, { label: "Methodology", value: "Agile" }],
+      actionLabel: "View Career History",
+      onAction: () => onNavigate('experience'),
+    },
+    {
+      id: 5,
+      title: "MASTERS EXPO",
+      subtitle: "Real-Time Event Command Center",
+      badge: "Featured FlumenX Project",
+      detail: "Engineered real-time operations command center with sub-100ms Socket.IO WebSocket synchronization, dynamic JWT claims RBAC, and live KPI/budget analytics.",
+      tech: ["Next.js 14", "Express", "MongoDB", "Socket.IO", "Linux VPS", "Nginx"],
+      stats: [{ label: "Sync Speed", value: "<100ms" }, { label: "Company", value: "FlumenX" }],
+      actionLabel: "Explore Works",
+      onAction: () => onNavigate('projects'),
+    },
+    {
+      id: 6,
+      title: "SUSRUTHA CMS",
+      subtitle: "Healthcare Patient & Clinical Engine",
+      badge: "Featured FlumenX Project",
+      detail: "Built comprehensive healthcare CMS managing patient queues, clinical records, doctor scheduling, and automated media processing pipelines.",
+      tech: ["Node.js", "Express", "TypeScript", "MongoDB", "Sharp", "Linux VPS"],
+      stats: [{ label: "Domain", value: "Healthcare" }, { label: "Capacity", value: "40 Beds" }],
+      actionLabel: "View Healthcare Works",
+      onAction: () => onNavigate('projects'),
+    }
+  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -81,16 +166,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
     return () => ctx.revert();
   }, []);
 
+  const currentGalleryItem = galleryImages[activeGalleryIndex];
+
   return (
     <section
       id="hero"
       ref={containerRef}
-      className="min-h-screen pt-32 sm:pt-44 pb-16 flex flex-col justify-between relative z-10 bg-purple-ambient"
+      className="min-h-screen pt-28 sm:pt-36 pb-16 flex flex-col justify-between relative z-10 bg-purple-ambient overflow-hidden"
     >
       <div className="max-w-[1280px] mx-auto w-full px-6 sm:px-10">
         
         {/* 12-Column Keynote Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-12">
           
           {/* Left Column (7 cols): Editorial Typography */}
           <div className="lg:col-span-7">
@@ -138,8 +225,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
           </div>
 
-          {/* Right Column (5 cols): Primary Executive Portrait Centerpiece */}
-          <div className="lg:col-span-5 flex justify-center">
+          {/* Right Column (5 cols): Primary Executive Portrait & Image Gallery Centerpiece */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center gap-4">
             <div
               ref={portraitFrameRef}
               className="w-full max-w-[420px] relative rounded-3xl bg-[#121214] border border-[#222227] p-3.5 shadow-2xl transition-all duration-500 hover:border-[#7C5CFF]/60 hover:scale-[1.01] opacity-0"
@@ -148,9 +235,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-[#161619]">
                 <img
                   ref={portraitImageRef}
-                  src={heroPortrait}
-                  alt={profileData.name}
-                  className="w-full h-full object-cover object-top filter brightness-[1.03] contrast-[1.04] transition-transform duration-700"
+                  src={currentGalleryItem.src}
+                  alt={currentGalleryItem.label}
+                  className="w-full h-full object-cover object-top filter brightness-[1.03] contrast-[1.04] transition-all duration-500"
                 />
 
                 {/* Bottom Vignette Gradient */}
@@ -160,7 +247,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <div className="absolute bottom-4 left-4 right-4 z-10 flex justify-between items-end text-white">
                   <div>
                     <div className="text-xs font-mono tracking-wider uppercase text-[#7C5CFF] font-bold">
-                      SENIOR WEB DEVELOPER
+                      {currentGalleryItem.tag}
                     </div>
                     <div className="font-display font-bold text-xl leading-snug text-white">
                       {profileData.name}
@@ -173,17 +260,37 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 </div>
               </div>
 
-              {/* Bottom Frame Caption */}
-              <div className="pt-3 px-2 flex justify-between items-center text-[11px] font-mono text-[#E4E4E7]">
-                <span className="flex items-center gap-1.5">
+              {/* Bottom Frame Image Selector Thumbnails */}
+              <div className="pt-3 px-1 flex justify-between items-center text-[11px] font-mono text-[#E4E4E7]">
+                <span className="flex items-center gap-1.5 font-bold text-white">
                   <IconShield size={14} className="text-[#7C5CFF]" />
-                  FLUMENX CORE DEV
+                  {currentGalleryItem.label}
                 </span>
-                <span className="text-[#7C5CFF] font-bold">AVAILABILITY: OPEN</span>
+                <div className="flex items-center gap-1.5">
+                  {galleryImages.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveGalleryIndex(idx)}
+                      className={`w-6 h-6 rounded-md overflow-hidden border transition-all cursor-pointer ${
+                        activeGalleryIndex === idx
+                          ? 'border-[#7C5CFF] ring-2 ring-[#7C5CFF]/40 scale-110'
+                          : 'border-[#333] opacity-60 hover:opacity-100'
+                      }`}
+                      title={img.label}
+                    >
+                      <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
+        </div>
+
+        {/* HERO RULER CAROUSEL SHOWCASE (WITH AUTO MOVE & COMPANIES WORKED) */}
+        <div className="w-full my-6">
+          <RulerCarousel originalItems={heroCarouselItems} autoPlayDuration={4000} />
         </div>
 
         {/* High-Contrast Impact Metrics Bar */}
@@ -209,7 +316,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
       </div>
 
       {/* Scroll Down Indicator */}
-      <div className="max-w-[1280px] mx-auto w-full px-6 sm:px-10 mt-12 flex justify-between items-center text-xs font-mono text-[#E4E4E7]">
+      <div className="max-w-[1280px] mx-auto w-full px-6 sm:px-10 mt-10 flex justify-between items-center text-xs font-mono text-[#E4E4E7]">
         <span>SCROLL TO DISCOVER</span>
         <button
           onClick={() => onNavigate('about')}

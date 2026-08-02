@@ -70,7 +70,7 @@ export const ExperienceTimelineSection: React.FC = () => {
             </h2>
           </div>
           <div className="text-sm font-mono text-[#E4E4E7]">
-            2024 &ndash; 2026+ Timeline
+            2024 &ndash; 2026+ Timeline ({experienceData.length} Roles)
           </div>
         </div>
 
@@ -105,7 +105,7 @@ export const ExperienceTimelineSection: React.FC = () => {
             <svg className="w-full h-full" preserveAspectRatio="none">
               <path
                 ref={pathRef}
-                d="M 1 0 V 1000"
+                d="M 1 0 V 1200"
                 fill="none"
                 stroke="#7C5CFF"
                 strokeWidth="2"
@@ -128,12 +128,26 @@ export const ExperienceTimelineSection: React.FC = () => {
               {/* Milestone Card Content */}
               <div className="p-8 rounded-3xl bg-[#121214] border border-[#222227] shadow-sm group-hover:border-[#7C5CFF]/50 group-hover:shadow-lg transition-all duration-300">
                 
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
                   <div className="flex items-center gap-4">
-                    {/* Official Company Logo Badge */}
-                    <div className="w-12 h-12 rounded-2xl bg-[#161619] border border-[#222227] flex items-center justify-center font-display font-extrabold text-sm text-[#7C5CFF] tracking-wider shrink-0 shadow-md">
-                      {exp.logoBadge || exp.company.substring(0, 2).toUpperCase()}
-                    </div>
+                    
+                    {/* Official Company Image Logo */}
+                    {exp.logoUrl ? (
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-[#222227] p-2 flex items-center justify-center shrink-0 shadow-md">
+                        <img
+                          src={exp.logoUrl}
+                          alt={exp.company}
+                          className="w-full h-full object-contain"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-12 h-12 rounded-2xl bg-[#161619] border border-[#222227] flex items-center justify-center font-display font-extrabold text-sm text-[#7C5CFF] tracking-wider shrink-0 shadow-md">
+                        {exp.logoBadge || exp.company.substring(0, 2).toUpperCase()}
+                      </div>
+                    )}
 
                     <div>
                       <div className="text-xs font-mono text-[#7C5CFF] font-bold mb-0.5">

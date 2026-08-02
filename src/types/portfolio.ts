@@ -26,6 +26,7 @@ export interface Position {
   highlights: string[];
   skillsUsed: string[];
   logoBadge?: string;
+  logoUrl?: string;
 }
 
 export interface SkillCategory {

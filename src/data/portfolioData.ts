@@ -1,4 +1,6 @@
 import type { ProfileData, Project, Position, SkillCategory } from '../types/portfolio';
+import flumenxLogo from '../assets/flumenx-logo.png';
+import trackpiLogo from '../assets/trackpi-logo.png';
 
 export const profileData: ProfileData = {
   name: "Najil Rahman P M",
@@ -14,7 +16,7 @@ export const profileData: ProfileData = {
   bio: [
     "I am a Senior Web Developer at FlumenX, specializing in architecting high-throughput full-stack platforms, cloud server infrastructure (Linux VPS, Nginx, PM2), and zero-trust security layers.",
     "Currently leading core web engineering at FlumenX, I build enterprise solutions like the Masters Expo Campaign Command Center and SUSRUTHA Healthcare CMS, while managing production Linux VPS cloud hosting and Nginx reverse proxies.",
-    "Over my career across FlumenX and Luvid Technologies, I've constructed statutory calculation engines for 150,000+ employees, zero-trust WebAuthn passkey security layers, and scalable cloud architectures."
+    "Over my career across FlumenX, Luvid Technologies, Track Pi, and Luminar Technolab, I've constructed statutory calculation engines for 150,000+ employees, zero-trust WebAuthn passkey security layers, and scalable cloud architectures."
   ],
   metrics: [
     { label: "Active Employees Processed", value: "150K+", detail: "High-volume monthly statutory compliance & payroll processing" },
@@ -138,6 +140,7 @@ export const experienceData: Position[] = [
     period: "July 2026 – Present",
     isCurrent: true,
     logoBadge: "FLUMENX",
+    logoUrl: flumenxLogo,
     summary: "Leading senior web engineering, full-stack application development, and production Linux VPS server hosting infrastructure (Nginx, PM2, SSL/TLS, reverse proxies) for enterprise clients.",
     highlights: [
       "Architected and deployed enterprise platforms including the Masters Expo Campaign Command Center (Next.js 14, Express, Socket.IO) and SUSRUTHA Healthcare CMS & Patient Portal (Node.js, Express, MongoDB, Sharp).",
@@ -154,6 +157,7 @@ export const experienceData: Position[] = [
     period: "Jan. 2025 – June 2026",
     isCurrent: false,
     logoBadge: "LUVID",
+    logoUrl: "https://www.luvid.in/assets/LUVID-LOGO-DoqVVSWo.png",
     summary: "Architected high-volume backend microservices, statutory compliance calculation engines for 150,000+ employees, zero-trust auth layers, and multi-tenant platforms.",
     highlights: [
       "Developed secure, modular RESTful APIs for a multi-tenant ERP and CRM platform using Express.js and TypeScript, reducing duplicate business logic by 40% through shared core engines.",
@@ -165,15 +169,32 @@ export const experienceData: Position[] = [
     skillsUsed: ["Node.js", "Express.js", "TypeScript", "MongoDB", "Redis", "WebAuthn", "RBAC/ABAC", "Socket.IO", "System Architecture"]
   },
   {
-    company: "Luminar Technolab",
+    company: "Track Pi",
     role: "MERN Stack Intern (3-Month Internship)",
     location: "Kozhikode, Kerala, India",
     period: "Oct. 2024 – Dec. 2024",
     isCurrent: false,
+    logoBadge: "TRACK PI",
+    logoUrl: trackpiLogo,
+    summary: "Completed a 3-month MERN Stack internship developing full-stack web applications, RESTful endpoints, and responsive user interfaces.",
+    highlights: [
+      "Constructed custom MERN (MongoDB, Express.js, React.js, Node.js) web applications with secure JWT authentication and dynamic dashboards.",
+      "Engineered responsive UI components and state management flows connected to Express RESTful backend microservices.",
+      "Collaborated on database schema design, index optimization, and API integration testing."
+    ],
+    skillsUsed: ["MongoDB", "Express.js", "React.js", "Node.js", "REST APIs", "JavaScript", "Git"]
+  },
+  {
+    company: "Luminar Technolab",
+    role: "MERN Stack Intern (3-Month Internship)",
+    location: "Kozhikode, Kerala, India",
+    period: "July 2024 – Sept. 2024",
+    isCurrent: false,
     logoBadge: "LUMINAR",
+    logoUrl: "https://www.luminartechnolab.com/static/assets/img/favicon.png",
     summary: "Completed an intensive 3-month MERN Stack internship building full-stack web applications, REST APIs, and database pipelines.",
     highlights: [
-      "Engineered full-stack MERN (MongoDB, Express.js, React.js, Node.js) web applications with secure authentication flows and custom RESTful endpoints.",
+      "Engineered full-stack MERN web applications with secure authentication flows and custom RESTful endpoints.",
       "Optimized database query performance, indexing, and MongoDB schema design across multi-table project pipelines.",
       "Collaborated in Agile sprints to deliver production-ready code, clean UI components, and API integration tests."
     ],

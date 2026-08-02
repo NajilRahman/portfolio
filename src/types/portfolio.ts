@@ -25,6 +25,7 @@ export interface Position {
   summary: string;
   highlights: string[];
   skillsUsed: string[];
+  logoBadge?: string;
 }
 
 export interface SkillCategory {
@@ -36,6 +37,7 @@ export interface SkillCategory {
     name: string;
     level: 'Expert' | 'Advanced' | 'Proficient';
     usage: string;
+    logoSlug?: string;
   }[];
 }
 

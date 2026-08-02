@@ -15,7 +15,7 @@ export const SkillsSection: React.FC = () => {
               04 &bull; Core Stack & Platform Engineering
             </div>
             <h2 className="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">
-              Interactive Technology Cards
+              Interactive Technology Stack & Official Logos
             </h2>
           </div>
           <div className="text-sm font-mono text-[#E4E4E7]">
@@ -44,6 +44,9 @@ export const SkillsSection: React.FC = () => {
                 {category.items.map((skill, idx) => {
                   const skillKey = `${category.id}-${skill.name}`;
                   const isHovered = hoveredSkill === skillKey;
+                  const logoUrl = skill.logoSlug
+                    ? `https://cdn.simpleicons.org/${skill.logoSlug}/7C5CFF`
+                    : null;
 
                   return (
                     <div
@@ -63,10 +66,31 @@ export const SkillsSection: React.FC = () => {
                       }`}
                     >
                       <div>
-                        <div className="flex items-center justify-between mb-3">
-                          <h4 className="font-display font-bold text-lg text-white">
-                            {skill.name}
-                          </h4>
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center gap-3">
+                            {/* Official Tech Logo Icon */}
+                            {logoUrl ? (
+                              <div className="w-9 h-9 rounded-xl bg-[#161619] border border-[#222227] p-1.5 flex items-center justify-center shrink-0">
+                                <img
+                                  src={logoUrl}
+                                  alt={skill.name}
+                                  className="w-full h-full object-contain filter brightness-110"
+                                  onError={(e) => {
+                                    e.currentTarget.style.display = 'none';
+                                  }}
+                                />
+                              </div>
+                            ) : (
+                              <div className="w-9 h-9 rounded-xl bg-[#161619] border border-[#222227] flex items-center justify-center text-[#7C5CFF] font-bold text-xs">
+                                {skill.name.substring(0, 2)}
+                              </div>
+                            )}
+
+                            <h4 className="font-display font-bold text-lg text-white">
+                              {skill.name}
+                            </h4>
+                          </div>
+
                           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-[#161619] text-[#7C5CFF] border border-[#7C5CFF]/40 font-bold">
                             {skill.level}
                           </span>

@@ -66,7 +66,7 @@ export const ExperienceTimelineSection: React.FC = () => {
               03 &bull; Career & Technical Evolution
             </div>
             <h2 className="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">
-              Work Experience & Platform Milestones
+              Work Experience & Company Milestones
             </h2>
           </div>
           <div className="text-sm font-mono text-[#E4E4E7]">
@@ -79,7 +79,7 @@ export const ExperienceTimelineSection: React.FC = () => {
           <div className="lg:col-span-7 p-8 sm:p-12 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7C5CFF]/15 border border-[#7C5CFF]/40 text-xs font-mono text-[#7C5CFF] font-bold">
               <span className="w-2 h-2 rounded-full bg-[#7C5CFF] animate-pulse" />
-              SYSTEM ARCHITECT & TECH LEAD
+              SYSTEM ARCHITECT & TECH LEAD @ FLUMENX
             </div>
             <h3 className="font-display font-bold text-2xl sm:text-4xl text-white">
               Architecting High-Throughput Distributed Cloud Systems
@@ -128,17 +128,25 @@ export const ExperienceTimelineSection: React.FC = () => {
               {/* Milestone Card Content */}
               <div className="p-8 rounded-3xl bg-[#121214] border border-[#222227] shadow-sm group-hover:border-[#7C5CFF]/50 group-hover:shadow-lg transition-all duration-300">
                 
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-                  <div>
-                    <div className="text-xs font-mono text-[#7C5CFF] font-bold mb-1">
-                      {exp.period} &bull; {exp.location}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-4">
+                  <div className="flex items-center gap-4">
+                    {/* Official Company Logo Badge */}
+                    <div className="w-12 h-12 rounded-2xl bg-[#161619] border border-[#222227] flex items-center justify-center font-display font-extrabold text-sm text-[#7C5CFF] tracking-wider shrink-0 shadow-md">
+                      {exp.logoBadge || exp.company.substring(0, 2).toUpperCase()}
                     </div>
-                    <h3 className="font-display font-bold text-2xl text-white">
-                      {exp.role}
-                    </h3>
+
+                    <div>
+                      <div className="text-xs font-mono text-[#7C5CFF] font-bold mb-0.5">
+                        {exp.period} &bull; {exp.location}
+                      </div>
+                      <h3 className="font-display font-bold text-2xl text-white">
+                        {exp.role}
+                      </h3>
+                    </div>
                   </div>
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#161619] border border-[#222227] text-xs font-mono text-white font-bold w-fit">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFF]" />
+
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#161619] border border-[#222227] text-xs font-mono text-white font-bold w-fit">
+                    <span className="w-2 h-2 rounded-full bg-[#7C5CFF]" />
                     {exp.company}
                   </div>
                 </div>

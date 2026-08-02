@@ -127,98 +127,6 @@ export const projectsData: Project[] = [
       { label: "Security Level", value: "Zero-Trust" },
       { label: "Session Protection", value: "HttpOnly + JWT" }
     ]
-  },
-  {
-    id: "ecosystem-crm",
-    name: "Ecosystem Multi-Tenant CRM API",
-    category: "crm",
-    tagline: "Lead Pipeline Scheduler & Queue Automation Backend",
-    description: "Multi-tenant business lead pipeline, client messaging schedulers, and support queue automation API. Backed by Socket.IO for live agents communications.",
-    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "Redis", "Socket.IO", "Nodemailer", "PDFKit", "Node-Cron"],
-    impact: "Integrated Redis-based queues and cron job workers to automate daily operations reports, increasing team responsiveness.",
-    architecturePoints: [
-      "Redis BullMQ async message queues for fault-tolerant email dispatch",
-      "Node-Cron scheduler generating automated PDF audit summaries at midnight",
-      "Tenant-isolated MongoDB database connections with security middleware"
-    ],
-    iconName: "Users",
-    imageUrl: "/images/worksphere.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: false,
-    stats: [
-      { label: "Queue Engine", value: "Redis BullMQ" },
-      { label: "Architecture", value: "Multi-Tenant" }
-    ]
-  },
-  {
-    id: "flow-ecommerce",
-    name: "Flow E-commerce API",
-    category: "ecommerce",
-    tagline: "Retail Billing Engine & Automated Inventory Audit Pipeline",
-    description: "High-volume retail e-commerce backend engine supporting dynamic cart checkouts, invoice PDF generators, and automated inventory spreadsheets exports.",
-    technologies: ["Node.js", "Express.js", "TypeScript", "MongoDB", "PDFKit", "XLSX", "Zod"],
-    impact: "Engineered automated billing generators and sales audit pipelines, eliminating invoice generation delays.",
-    architecturePoints: [
-      "PDFKit streaming document generator producing invoices instantly",
-      "Streaming XLSX generation for multi-thousand row stock inventory exports",
-      "Zod schema validation ensuring strict cart payload integrity"
-    ],
-    iconName: "ShoppingCart",
-    imageUrl: "/images/susrutha.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: false,
-    stats: [
-      { label: "Invoice Engine", value: "PDFKit Stream" }
-    ]
-  },
-  {
-    id: "ai-crm",
-    name: "AI-Assisted Customer Relationship Management",
-    category: "crm",
-    tagline: "Local LLM Lead Triage & Intelligence Pipeline",
-    description: "A multi-tenant CRM orchestrating automated lead pipelines and marketing schedules. Integrated AI layers for lead scoring and client engagement recommendation.",
-    technologies: ["Node.js", "Express.js", "MongoDB", "React.js", "OpenRouter", "Ollama"],
-    impact: "Integrated local Ollama & OpenRouter models to automate qualitative lead triage and categorization.",
-    architecturePoints: [
-      "Local Ollama embedding pipeline for confidential lead classification",
-      "Fallback to OpenRouter API for complex email summary generation"
-    ],
-    iconName: "Brain",
-    imageUrl: "/images/masters_expo.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: true,
-    stats: [
-      { label: "AI Engine", value: "Ollama + OpenRouter" }
-    ]
-  },
-  {
-    id: "passkey-gateway",
-    name: "WebAuthn Passkey & SSO Handoff Gateway",
-    category: "security",
-    tagline: "Biometric Passwordless Auth & Session Cookie Shield",
-    description: "Enterprise-grade zero-trust passwordless authentication server featuring biometric login and secure session exchanges to defeat session hijacking.",
-    technologies: ["TypeScript", "Node.js", "WebAuthn API", "JWT", "Redis", "RBAC/ABAC Guards"],
-    impact: "Replaced legacy credentials with Passkeys, cutting login latency by 50% and protecting session cookies.",
-    architecturePoints: [
-      "FIDO2 / WebAuthn challenge generation & credential verification protocol",
-      "Zero-trust ABAC policy guard parsing request context, IP subnet & client signature"
-    ],
-    iconName: "Lock",
-    imageUrl: "/images/sso_gateway.png",
-    demoUrl: "#",
-    sourceUrl: "https://github.com/NajilRahman",
-    isPrivate: true,
-    featured: true,
-    stats: [
-      { label: "Protocol", value: "FIDO2 / WebAuthn" },
-      { label: "Latency", value: "-50% Cut" }
-    ]
   }
 ];
 
@@ -229,6 +137,7 @@ export const experienceData: Position[] = [
     location: "Kerala, India",
     period: "July 2026 – Present",
     isCurrent: true,
+    logoBadge: "FLUMENX",
     summary: "Leading senior web engineering, full-stack application development, and production Linux VPS server hosting infrastructure (Nginx, PM2, SSL/TLS, reverse proxies) for enterprise clients.",
     highlights: [
       "Architected and deployed enterprise platforms including the Masters Expo Campaign Command Center (Next.js 14, Express, Socket.IO) and SUSRUTHA Healthcare CMS & Patient Portal (Node.js, Express, MongoDB, Sharp).",
@@ -244,6 +153,7 @@ export const experienceData: Position[] = [
     location: "Kozhikode, Kerala, India",
     period: "Jan. 2025 – June 2026",
     isCurrent: false,
+    logoBadge: "LUVID",
     summary: "Architected high-volume backend microservices, statutory compliance calculation engines for 150,000+ employees, zero-trust auth layers, and multi-tenant platforms.",
     highlights: [
       "Developed secure, modular RESTful APIs for a multi-tenant ERP and CRM platform using Express.js and TypeScript, reducing duplicate business logic by 40% through shared core engines.",
@@ -260,6 +170,7 @@ export const experienceData: Position[] = [
     location: "Kozhikode, Kerala, India",
     period: "Oct. 2024 – Dec. 2024",
     isCurrent: false,
+    logoBadge: "LUMINAR",
     summary: "Completed an intensive 3-month MERN Stack internship building full-stack web applications, REST APIs, and database pipelines.",
     highlights: [
       "Engineered full-stack MERN (MongoDB, Express.js, React.js, Node.js) web applications with secure authentication flows and custom RESTful endpoints.",
@@ -277,13 +188,13 @@ export const skillCategoriesData: SkillCategory[] = [
     description: "Building scalable, high-throughput microservices and data pipelines",
     iconName: "Cpu",
     items: [
-      { name: "Node.js", level: "Expert", usage: "Engineered multi-core worker clusters processing 150k+ payroll records" },
-      { name: "Express.js", level: "Expert", usage: "Constructed modular REST APIs with shared controller factories" },
-      { name: "TypeScript", level: "Expert", usage: "Strict type safety across backend services & Zod runtime validation" },
-      { name: "JavaScript (ESNext)", level: "Expert", usage: "Asynchronous I/O, event loops, stream processing & buffers" },
-      { name: "REST APIs", level: "Expert", usage: "Clean API contract design with Swagger/OpenAPI documentation" },
-      { name: "Socket.IO", level: "Advanced", usage: "Sub-100ms real-time WebSocket state synchronization for Masters Expo" },
-      { name: "Mongoose & Aggregation", level: "Expert", usage: "Complex multi-stage aggregation pipelines for stock & payroll analytics" }
+      { name: "Node.js", level: "Expert", usage: "Engineered multi-core worker clusters processing 150k+ payroll records", logoSlug: "nodedotjs" },
+      { name: "Express.js", level: "Expert", usage: "Constructed modular REST APIs with shared controller factories", logoSlug: "express" },
+      { name: "TypeScript", level: "Expert", usage: "Strict type safety across backend services & Zod runtime validation", logoSlug: "typescript" },
+      { name: "JavaScript (ESNext)", level: "Expert", usage: "Asynchronous I/O, event loops, stream processing & buffers", logoSlug: "javascript" },
+      { name: "REST APIs", level: "Expert", usage: "Clean API contract design with Swagger/OpenAPI documentation", logoSlug: "postman" },
+      { name: "Socket.IO", level: "Advanced", usage: "Sub-100ms real-time WebSocket state synchronization for Masters Expo", logoSlug: "socketdotio" },
+      { name: "Mongoose & Aggregation", level: "Expert", usage: "Complex multi-stage aggregation pipelines for stock & payroll analytics", logoSlug: "mongodb" }
     ]
   },
   {
@@ -292,12 +203,12 @@ export const skillCategoriesData: SkillCategory[] = [
     description: "Production Linux server administration, Nginx, and cloud hosting",
     iconName: "Wrench",
     items: [
-      { name: "Linux VPS Hosting", level: "Expert", usage: "Configuring Ubuntu server instances, firewall UFW rules & SSH hardening" },
-      { name: "Nginx Reverse Proxy", level: "Expert", usage: "Setting up virtual hosts, SSL/TLS termination & load balancing" },
-      { name: "PM2 Cluster Manager", level: "Expert", usage: "Zero-downtime process reloads, cluster mode & log rotation" },
-      { name: "Domain & DNS Routing", level: "Expert", usage: "DNS A/CNAME record management, Cloudflare & SSL certificate renewals" },
-      { name: "Docker (Basic)", level: "Proficient", usage: "Containerized microservice environments & Compose scripts" },
-      { name: "Swagger / Postman", level: "Expert", usage: "Interactive API testing suites & OpenAPI specification" }
+      { name: "Linux VPS Hosting", level: "Expert", usage: "Configuring Ubuntu server instances, firewall UFW rules & SSH hardening", logoSlug: "linux" },
+      { name: "Nginx Reverse Proxy", level: "Expert", usage: "Setting up virtual hosts, SSL/TLS termination & load balancing", logoSlug: "nginx" },
+      { name: "PM2 Cluster Manager", level: "Expert", usage: "Zero-downtime process reloads, cluster mode & log rotation", logoSlug: "pm2" },
+      { name: "Domain & DNS Routing", level: "Expert", usage: "DNS A/CNAME record management, Cloudflare & SSL certificate renewals", logoSlug: "cloudflare" },
+      { name: "Docker (Basic)", level: "Proficient", usage: "Containerized microservice environments & Compose scripts", logoSlug: "docker" },
+      { name: "Swagger / Postman", level: "Expert", usage: "Interactive API testing suites & OpenAPI specification", logoSlug: "swagger" }
     ]
   },
   {
@@ -306,11 +217,11 @@ export const skillCategoriesData: SkillCategory[] = [
     description: "Zero-trust session protection and authentication gateways",
     iconName: "Shield",
     items: [
-      { name: "WebAuthn (Passkeys)", level: "Advanced", usage: "FIDO2 biometric passwordless authentication flows" },
-      { name: "JWT Session Gateway", level: "Expert", usage: "Encrypted token hand-offs & SameSite HttpOnly cookie shields" },
-      { name: "RBAC & ABAC Guards", level: "Expert", usage: "Attribute & role-based middleware guards for enterprise menus" },
-      { name: "API Rate Limiting", level: "Advanced", usage: "Leaky-bucket & sliding window rate limits preventing brute-force" },
-      { name: "SSO Handoff Protocol", level: "Advanced", usage: "Cross-domain session delegation defeating session hijacking" }
+      { name: "WebAuthn (Passkeys)", level: "Advanced", usage: "FIDO2 biometric passwordless authentication flows", logoSlug: "auth0" },
+      { name: "JWT Session Gateway", level: "Expert", usage: "Encrypted token hand-offs & SameSite HttpOnly cookie shields", logoSlug: "jsonwebtokens" },
+      { name: "RBAC & ABAC Guards", level: "Expert", usage: "Attribute & role-based middleware guards for enterprise menus", logoSlug: "shield" },
+      { name: "API Rate Limiting", level: "Advanced", usage: "Leaky-bucket & sliding window rate limits preventing brute-force", logoSlug: "fastapi" },
+      { name: "SSO Handoff Protocol", level: "Advanced", usage: "Cross-domain session delegation defeating session hijacking", logoSlug: "authy" }
     ]
   },
   {
@@ -319,11 +230,11 @@ export const skillCategoriesData: SkillCategory[] = [
     description: "High-performance data storage, indexing, and memory optimization",
     iconName: "Terminal",
     items: [
-      { name: "MongoDB", level: "Expert", usage: "Schema design, compound indexing, atomic transactions & replication" },
-      { name: "Redis Cache & BullMQ", level: "Advanced", usage: "In-memory caching layer & async background queue processing" },
-      { name: "PostgreSQL", level: "Proficient", usage: "Relational table schemas, foreign key constraints & SQL queries" },
-      { name: "MySQL", level: "Proficient", usage: "Multi-table query optimization and index tuning" },
-      { name: "Database Indexing", level: "Advanced", usage: "Query plan analysis & compound index optimizations" }
+      { name: "MongoDB", level: "Expert", usage: "Schema design, compound indexing, atomic transactions & replication", logoSlug: "mongodb" },
+      { name: "Redis Cache & BullMQ", level: "Advanced", usage: "In-memory caching layer & async background queue processing", logoSlug: "redis" },
+      { name: "PostgreSQL", level: "Proficient", usage: "Relational table schemas, foreign key constraints & SQL queries", logoSlug: "postgresql" },
+      { name: "MySQL", level: "Proficient", usage: "Multi-table query optimization and index tuning", logoSlug: "mysql" },
+      { name: "Database Indexing", level: "Advanced", usage: "Query plan analysis & compound index optimizations", logoSlug: "dbeaver" }
     ]
   },
   {
@@ -332,12 +243,12 @@ export const skillCategoriesData: SkillCategory[] = [
     description: "Creating liquid glass interfaces with smooth 60fps animations",
     iconName: "Layers",
     items: [
-      { name: "React.js", level: "Expert", usage: "Modern component architecture, custom hooks & state management" },
-      { name: "Next.js 14", level: "Expert", usage: "App Router, Server Components & SEO meta structures for FlumenX projects" },
-      { name: "Tailwind CSS v4", level: "Expert", usage: "Custom design token systems, glassmorphic utilities & responsive grids" },
-      { name: "GSAP & ScrollTrigger", level: "Advanced", usage: "Kinetic scroll reveals, timeline animations & parallax depth" },
-      { name: "Framer Motion", level: "Advanced", usage: "Physics-based layout transitions & gesture motion" },
-      { name: "Lenis Smooth Scroll", level: "Advanced", usage: "Butter-smooth momentum scrolling and camera inertia" }
+      { name: "React.js", level: "Expert", usage: "Modern component architecture, custom hooks & state management", logoSlug: "react" },
+      { name: "Next.js 14", level: "Expert", usage: "App Router, Server Components & SEO meta structures for FlumenX projects", logoSlug: "nextdotjs" },
+      { name: "Tailwind CSS v4", level: "Expert", usage: "Custom design token systems, glassmorphic utilities & responsive grids", logoSlug: "tailwindcss" },
+      { name: "GSAP & ScrollTrigger", level: "Advanced", usage: "Kinetic scroll reveals, timeline animations & parallax depth", logoSlug: "greensock" },
+      { name: "Framer Motion", level: "Advanced", usage: "Physics-based layout transitions & gesture motion", logoSlug: "framer" },
+      { name: "Lenis Smooth Scroll", level: "Advanced", usage: "Butter-smooth momentum scrolling and camera inertia", logoSlug: "vibe" }
     ]
   }
 ];

@@ -2,7 +2,7 @@ import React from 'react';
 import { profileData } from '../../data/portfolioData';
 import { TextScrubReveal } from '../motion/TextScrubReveal';
 import { IconGlobe, IconMapPin, IconMail } from '../ui/MinimalIcons';
-import profilePhoto from '../../assets/myimage.jpg.jpeg';
+import aboutDeskPhoto from '../../assets/about-desk.jpg';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -79,16 +79,16 @@ export const AboutSection: React.FC = () => {
 
           </div>
 
-          {/* Sidebar Column: Portrait & Education Cards */}
+          {/* Sidebar Column: Desk Portrait & Position Cards */}
           <div className="lg:col-span-5 space-y-8">
             
-            {/* Secondary Portrait Badge */}
-            <div className="p-3.5 rounded-3xl bg-[#121214] border border-[#222227] shadow-xl overflow-hidden">
+            {/* Story Desk Portrait Card */}
+            <div className="p-3.5 rounded-3xl bg-[#121214] border border-[#222227] shadow-xl overflow-hidden group">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-[#161619]">
                 <img
-                  src={profilePhoto}
+                  src={aboutDeskPhoto}
                   alt={profileData.name}
-                  className="w-full h-full object-cover object-top filter brightness-[1.03]"
+                  className="w-full h-full object-cover object-center filter brightness-[1.03] transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="px-2 pb-2">
@@ -96,7 +96,7 @@ export const AboutSection: React.FC = () => {
                   {profileData.name}
                 </div>
                 <div className="text-xs font-mono text-[#7C5CFF] font-bold">
-                  Senior Web Developer @ FlumenX
+                  Senior Web Developer &bull; FlumenX
                 </div>
               </div>
             </div>

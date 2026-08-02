@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { EditorialCanvas } from './components/canvas/EditorialCanvas';
 import { SmoothScroll } from './components/motion/SmoothScroll';
 import { HeaderNav } from './components/layout/HeaderNav';
+import { MobileBottomBar } from './components/layout/MobileBottomBar';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 import { SpotlightCursor } from './components/ui/SpotlightCursor';
 import SplashCursor from './components/ui/SplashCursor';
@@ -54,7 +55,7 @@ function App() {
 
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen bg-[#0B0B0C] text-[#F4F4F6] font-sans select-none overflow-x-hidden">
+      <div className="relative min-h-screen bg-[#0B0B0C] text-[#F4F4F6] font-sans select-none overflow-x-hidden pb-20 md:pb-0">
         
         {/* Luxury Intro Splash Preloader */}
         <SplashScreen />
@@ -86,6 +87,9 @@ function App() {
 
         {/* Editorial Sticky Header Navigation */}
         <HeaderNav activeSection={activeSection} onNavigate={handleNavigate} />
+
+        {/* Mobile App Dock Navigation Bar */}
+        <MobileBottomBar activeSection={activeSection} onNavigate={handleNavigate} />
 
         {/* Page Main Content Container */}
         <main className="relative z-10">

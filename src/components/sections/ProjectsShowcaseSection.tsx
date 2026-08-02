@@ -40,21 +40,20 @@ export const ProjectsShowcaseSection: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 2026 Trending Card Stacking & Shuffling Scroll Animation
+      // Fast, Snappy 2026 Project Card Reveal Animation
       const cards = gsap.utils.toArray<HTMLElement>('.project-card');
       cards.forEach((card) => {
         gsap.fromTo(
           card,
-          { y: 80, opacity: 0, scale: 0.94 },
+          { y: 25, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            scale: 1,
-            duration: 0.9,
-            ease: 'power3.out',
+            duration: 0.35,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 82%',
+              start: 'top 92%',
             },
           }
         );

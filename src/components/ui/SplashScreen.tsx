@@ -3,7 +3,6 @@ import heroPortrait from '../../assets/hero-portrait.jpg';
 import aboutDesk from '../../assets/about-desk.jpg';
 import architectureWorkspace from '../../assets/architecture-workspace.jpg';
 import contactHeadshot from '../../assets/contact-headshot.jpg';
-import { soundFx } from '../../utils/soundEffects';
 
 interface SplashScreenProps {
   onComplete?: () => void;
@@ -28,14 +27,12 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    soundFx.playSplashRiser();
 
     // Fast smooth 00 to 100% counter
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          soundFx.playSplashChime();
           setTimeout(() => {
             setIsFadingOut(true);
             setTimeout(() => {

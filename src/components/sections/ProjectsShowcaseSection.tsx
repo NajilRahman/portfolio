@@ -27,19 +27,21 @@ export const ProjectsShowcaseSection: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // 2026 Trending Card Stacking & Shuffling Scroll Animation
       const cards = gsap.utils.toArray<HTMLElement>('.project-card');
       cards.forEach((card) => {
         gsap.fromTo(
           card,
-          { y: 50, opacity: 0 },
+          { y: 80, opacity: 0, scale: 0.94 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            scale: 1,
+            duration: 0.9,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 85%',
+              start: 'top 82%',
             },
           }
         );
@@ -50,7 +52,7 @@ export const ProjectsShowcaseSection: React.FC = () => {
   }, [activeCategory]);
 
   return (
-    <section id="projects" ref={containerRef} className="py-24 sm:py-32 border-t border-[#E4E4E7] relative z-10">
+    <section id="projects" ref={containerRef} className="py-24 sm:py-32 border-t border-[#222227] relative z-10">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-10">
         
         {/* Section Header */}
@@ -59,11 +61,11 @@ export const ProjectsShowcaseSection: React.FC = () => {
             <div className="text-xs font-mono tracking-widest uppercase text-[#7C5CFF] mb-3 font-bold">
               02 &bull; Selected Works & Platform Architecture
             </div>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#09090B] tracking-tight">
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">
               Featured Case Studies & Production Engines
             </h2>
           </div>
-          <div className="text-sm font-mono text-[#3F3F46]">
+          <div className="text-sm font-mono text-[#E4E4E7]">
             FlumenX & Full-Stack Projects ({projectsData.length})
           </div>
         </div>
@@ -77,7 +79,7 @@ export const ProjectsShowcaseSection: React.FC = () => {
               className={`px-4 py-2 rounded-full text-xs font-mono transition-all cursor-pointer ${
                 activeCategory === cat.id
                   ? 'bg-[#7C5CFF] text-white font-semibold shadow-md shadow-[#7C5CFF]/20'
-                  : 'bg-white text-[#3F3F46] hover:text-[#09090B] border border-[#E4E4E7] shadow-sm'
+                  : 'bg-[#121214] text-[#E4E4E7] hover:text-white border border-[#222227]'
               }`}
             >
               {cat.label}
@@ -90,10 +92,10 @@ export const ProjectsShowcaseSection: React.FC = () => {
           {filteredProjects.map((project) => (
             <article
               key={project.id}
-              className="project-card group relative rounded-3xl bg-white border border-[#E4E4E7] shadow-sm overflow-hidden flex flex-col justify-between transition-all duration-500 hover:border-[#7C5CFF]/60 hover:shadow-xl"
+              className="project-card group relative rounded-3xl bg-[#121214] border border-[#222227] overflow-hidden flex flex-col justify-between transition-all duration-500 hover:border-[#7C5CFF]/60 hover:shadow-2xl"
             >
-              {/* Image Preview Container */}
-              <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-[#F4F4F5]">
+              {/* Project Image Preview Container */}
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-[#161619]">
                 {project.imageUrl ? (
                   <img
                     src={project.imageUrl}
@@ -105,15 +107,15 @@ export const ProjectsShowcaseSection: React.FC = () => {
                   />
                 ) : null}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121214] via-transparent to-transparent opacity-90" />
 
                 {/* Top Badge */}
                 <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-mono bg-white/90 backdrop-blur-md text-[#7C5CFF] border border-[#7C5CFF]/30 font-bold shadow-sm">
+                  <span className="px-3 py-1 rounded-full text-[11px] font-mono bg-[#0B0B0C]/80 backdrop-blur-md text-[#7C5CFF] border border-[#7C5CFF]/40 font-bold shadow-sm">
                     {project.category.toUpperCase()}
                   </span>
                   {project.isPrivate && (
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-mono bg-white/90 text-[#71717A] border border-[#E4E4E7] shadow-sm">
+                    <span className="px-2.5 py-1 rounded-full text-[10px] font-mono bg-[#161619]/90 text-[#E4E4E7] border border-[#222227]">
                       CONFIDENTIAL / PROPRIETARY
                     </span>
                   )}
@@ -123,13 +125,13 @@ export const ProjectsShowcaseSection: React.FC = () => {
               {/* Content Body */}
               <div className="p-8 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="text-xs font-mono text-[#7C5CFF] font-bold mb-2">
+                  <div className="text-xs font-mono text-[#7C5CFF] font-semibold mb-2">
                     {project.tagline}
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-[#09090B] mb-3 group-hover:text-[#7C5CFF] transition-colors">
+                  <h3 className="font-display font-bold text-2xl text-white mb-3 group-hover:text-[#7C5CFF] transition-colors">
                     {project.name}
                   </h3>
-                  <p className="text-sm text-[#3F3F46] leading-relaxed mb-6 line-clamp-3">
+                  <p className="text-sm text-[#E4E4E7] leading-relaxed mb-6 line-clamp-3">
                     {project.description}
                   </p>
 
@@ -137,7 +139,7 @@ export const ProjectsShowcaseSection: React.FC = () => {
                   {project.architecturePoints && project.architecturePoints.length > 0 && (
                     <div className="space-y-1.5 mb-6">
                       {project.architecturePoints.slice(0, 2).map((point: string, i: number) => (
-                        <div key={i} className="text-xs font-mono text-[#3F3F46] flex items-start gap-2">
+                        <div key={i} className="text-xs font-mono text-[#E4E4E7] flex items-start gap-2">
                           <span className="text-[#7C5CFF] font-bold mt-0.5">&bull;</span>
                           <span>{point}</span>
                         </div>
@@ -147,12 +149,12 @@ export const ProjectsShowcaseSection: React.FC = () => {
                 </div>
 
                 {/* Footer Tech Stack & Actions */}
-                <div className="pt-6 border-t border-[#E4E4E7]">
+                <div className="pt-6 border-t border-[#222227]">
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.slice(0, 5).map((tech: string, i: number) => (
                       <span
                         key={i}
-                        className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[#F4F4F5] text-[#09090B] border border-[#E4E4E7]"
+                        className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[#161619] text-white border border-[#222227]"
                       >
                         {tech}
                       </span>
@@ -174,7 +176,7 @@ export const ProjectsShowcaseSection: React.FC = () => {
                           href={project.sourceUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="p-2 rounded-full bg-[#F4F4F5] text-[#09090B] hover:text-[#7C5CFF] border border-[#E4E4E7] transition-colors"
+                          className="p-2 rounded-full bg-[#161619] text-white hover:border-[#7C5CFF] border border-[#222227] transition-colors"
                           title="View Repository"
                         >
                           <IconGithub size={16} />
@@ -194,37 +196,37 @@ export const ProjectsShowcaseSection: React.FC = () => {
       {/* Case Details Modal */}
       {selectedProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#09090B]/60 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#0B0B0C]/90 backdrop-blur-xl"
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="bg-white border border-[#E4E4E7] rounded-3xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl"
+            className="bg-[#121214] border border-[#222227] rounded-3xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-start mb-6">
               <div>
-                <span className="text-xs font-mono text-[#7C5CFF] uppercase tracking-wider font-bold">
+                <span className="text-xs font-mono text-[#7C5CFF] uppercase tracking-wider font-semibold">
                   {selectedProject.category} Case Study
                 </span>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#09090B] mt-1">
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-white mt-1">
                   {selectedProject.name}
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedProject(null)}
-                className="text-[#09090B] hover:text-[#7C5CFF] text-lg font-mono px-2 py-1 cursor-pointer"
+                className="text-white hover:text-[#7C5CFF] text-lg font-mono px-2 py-1 cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
-            <p className="text-sm text-[#3F3F46] leading-relaxed mb-6">
+            <p className="text-sm text-[#E4E4E7] leading-relaxed mb-6">
               {selectedProject.description}
             </p>
 
             <div className="mb-6">
               <h4 className="text-xs font-mono uppercase text-[#7C5CFF] mb-2 font-bold">Impact Summary</h4>
-              <p className="text-sm text-[#09090B] bg-[#F4F4F5] p-4 rounded-2xl border border-[#E4E4E7] leading-relaxed">
+              <p className="text-sm text-white bg-[#161619] p-4 rounded-2xl border border-[#222227] leading-relaxed">
                 {selectedProject.impact}
               </p>
             </div>
@@ -234,7 +236,7 @@ export const ProjectsShowcaseSection: React.FC = () => {
                 <h4 className="text-xs font-mono uppercase text-[#7C5CFF] mb-2 font-bold">Architecture Highlights</h4>
                 <ul className="space-y-2">
                   {selectedProject.architecturePoints.map((pt: string, i: number) => (
-                    <li key={i} className="text-xs font-mono text-[#3F3F46] flex items-start gap-2">
+                    <li key={i} className="text-xs font-mono text-[#E4E4E7] flex items-start gap-2">
                       <span className="text-[#7C5CFF] font-bold mt-0.5">&bull;</span>
                       <span>{pt}</span>
                     </li>
@@ -249,7 +251,7 @@ export const ProjectsShowcaseSection: React.FC = () => {
                 {selectedProject.technologies.map((tech: string, i: number) => (
                   <span
                     key={i}
-                    className="px-3 py-1 rounded-md text-xs font-mono bg-[#F4F4F5] text-[#09090B] border border-[#E4E4E7]"
+                    className="px-3 py-1 rounded-md text-xs font-mono bg-[#161619] text-white border border-[#222227]"
                   >
                     {tech}
                   </span>
@@ -257,10 +259,10 @@ export const ProjectsShowcaseSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex justify-end gap-4 pt-4 border-t border-[#E4E4E7]">
+            <div className="flex justify-end gap-4 pt-4 border-t border-[#222227]">
               <button
                 onClick={() => setSelectedProject(null)}
-                className="px-6 py-2.5 rounded-full text-xs font-mono bg-white text-[#09090B] hover:border-[#7C5CFF] border border-[#E4E4E7] shadow-sm cursor-pointer"
+                className="px-6 py-2.5 rounded-full text-xs font-mono bg-[#161619] text-white hover:border-[#7C5CFF] border border-[#222227] cursor-pointer"
               >
                 Close Case
               </button>

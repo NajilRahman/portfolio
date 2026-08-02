@@ -31,7 +31,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ activeSection, onNavigate 
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#FBFBFD]/90 backdrop-blur-md border-b border-[#E4E4E7] py-4 shadow-sm'
+          ? 'bg-[#0B0B0C]/85 backdrop-blur-md border-b border-[#222227] py-4 shadow-xl'
           : 'bg-transparent py-6 sm:py-8'
       }`}
     >
@@ -42,21 +42,21 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ activeSection, onNavigate 
           onClick={() => onNavigate('hero')}
           className="group flex items-center gap-3 cursor-pointer text-left"
         >
-          <span className="w-9 h-9 rounded-full bg-white border border-[#E4E4E7] shadow-sm flex items-center justify-center font-display font-bold text-sm text-[#09090B] group-hover:border-[#7C5CFF] transition-colors">
+          <span className="w-9 h-9 rounded-full bg-[#121214] border border-[#222227] flex items-center justify-center font-display font-bold text-sm text-white group-hover:border-[#7C5CFF] transition-colors">
             NR
           </span>
           <div className="hidden sm:block">
-            <div className="font-display font-bold text-sm tracking-tight text-[#09090B]">
+            <div className="font-display font-bold text-sm tracking-tight text-white">
               {profileData.name}
             </div>
-            <div className="text-[11px] font-mono text-[#71717A] flex items-center gap-1.5 font-medium">
+            <div className="text-[11px] font-mono text-[#E4E4E7] flex items-center gap-1.5 font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFF] animate-pulse" />
               FlumenX Senior Dev
             </div>
           </div>
         </button>
 
-        {/* Minimal Navigation */}
+        {/* Minimal High-Contrast Navigation */}
         <nav className="flex items-center gap-1 sm:gap-6">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
@@ -65,7 +65,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ activeSection, onNavigate 
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
                 className={`px-3 py-1.5 text-xs sm:text-sm font-medium transition-all relative cursor-pointer ${
-                  isActive ? 'text-[#09090B] font-bold' : 'text-[#52525B] hover:text-[#09090B]'
+                  isActive ? 'text-white font-bold' : 'text-[#E4E4E7] hover:text-white'
                 }`}
               >
                 {item.label}
@@ -81,7 +81,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ activeSection, onNavigate 
         <div className="hidden lg:block">
           <button
             onClick={() => onNavigate('contact')}
-            className="text-xs font-mono tracking-wider uppercase px-4 py-2 rounded-full border border-[#E4E4E7] bg-white text-[#09090B] shadow-sm font-bold hover:border-[#7C5CFF] hover:text-[#7C5CFF] transition-colors cursor-pointer"
+            className="text-xs font-mono tracking-wider uppercase px-4 py-2 rounded-full border border-[#222227] bg-[#121214] text-white font-bold hover:border-[#7C5CFF] hover:text-[#7C5CFF] transition-colors cursor-pointer"
           >
             Get In Touch
           </button>

@@ -35,6 +35,31 @@ export const profileData: ProfileData = {
 
 export const projectsData: Project[] = [
   {
+    id: "sass-ecommerce",
+    name: "Multi-Tenant SaaS E-Commerce Platform",
+    company: "Personal SaaS Project",
+    category: "ecommerce",
+    tagline: "Multi-Tenant Storefront Engine & MongoDB Replica Set Pipeline",
+    description: "Self-engineered multi-tenant SaaS e-commerce platform (`D:\\project ideas\\SaSS ECOMERCE`). Built with Next.js 14 App Router, Express, TypeScript, and MongoDB replica sets. Features dynamic tenant storefront routing, background image optimization pipelines (Sharp & Cloudinary), Zustand store state management, and Zod payload validation.",
+    technologies: ["Next.js 14", "Express.js", "TypeScript", "MongoDB Replica Set", "Zustand", "Sharp", "Cloudinary", "Zod", "Tailwind CSS"],
+    impact: "Constructed an end-to-end multi-tenant e-commerce platform supporting dynamic subdomains, custom tenant themes, and atomic transactional orders.",
+    architecturePoints: [
+      "MongoDB replica set transaction engine ensuring zero inventory oversell during high-volume checkout",
+      "Sharp & Cloudinary background worker for instant image compression & CDN delivery",
+      "Zustand lightweight state store managing dynamic cart, multi-step checkout & tenant session states"
+    ],
+    iconName: "ShoppingBag",
+    imageUrl: "/images/crm.png",
+    demoUrl: "#",
+    sourceUrl: "https://github.com/NajilRahman",
+    isPrivate: true,
+    featured: true,
+    stats: [
+      { label: "Owner", value: "Self-Engineered SaaS" },
+      { label: "Stack", value: "Next.js 14 + Monorepo" }
+    ]
+  },
+  {
     id: "worksphere-payroll",
     name: "WorkSphere Statutory Payroll & HRMS Engine",
     company: "Luvid Technologies",

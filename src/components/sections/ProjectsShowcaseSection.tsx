@@ -14,18 +14,19 @@ export const ProjectsShowcaseSection: React.FC = () => {
 
   const categories = [
     { id: 'all', label: 'All Works' },
+    { id: 'personal', label: 'Personal & SaaS' },
     { id: 'luvid', label: 'Luvid Technologies' },
     { id: 'flumenx', label: 'FlumenX Projects' },
     { id: 'enterprise', label: 'Enterprise & ERP' },
     { id: 'healthcare', label: 'Healthcare CMS' },
-    { id: 'fintech', label: 'FinTech & Lending' },
-    { id: 'security', label: 'Security & SSO' },
-    { id: 'crm', label: 'CRM & Automation' },
+    { id: 'fintech', label: 'FinTech & Security' },
   ];
 
   const filteredProjects =
     activeCategory === 'all'
       ? projectsData
+      : activeCategory === 'personal'
+      ? projectsData.filter((p) => p.company?.includes('Personal') || p.category === 'saas' || p.category === 'ecommerce')
       : activeCategory === 'luvid'
       ? projectsData.filter((p) => p.company === 'Luvid Technologies')
       : activeCategory === 'flumenx'

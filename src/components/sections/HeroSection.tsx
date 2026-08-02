@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { profileData } from '../../data/portfolioData';
 import { MagneticButton } from '../ui/MagneticButton';
 import { IconArrowUpRight, IconChevronDown, IconMapPin, IconShield } from '../ui/MinimalIcons';
-import { RulerCarousel, type CarouselItem } from '../ui/ruler-carousel';
 
 import heroPortrait from '../../assets/hero-portrait.jpg';
 import myImage from '../../assets/myimage.jpg.jpeg';
@@ -36,97 +35,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const portraitImageRef = useRef<HTMLImageElement>(null);
 
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
-
-  const heroCarouselItems: CarouselItem[] = [
-    {
-      id: 1,
-      title: "150K+ EMPLOYEES PROCESSED",
-      subtitle: "High-Volume Statutory Payroll Engine",
-      badge: "Luvid Payroll Milestone",
-      detail: "Architected high-throughput statutory compliance engine processing monthly payroll calculations for 150,000+ active employees with Go execution microservices (`salary-processor-go`) and zero computation failures.",
-      tech: ["Node.js Cluster", "Go Microservice", "Redis Cache", "MongoDB", "AG-Grid"],
-      stats: [{ label: "Scale", value: "150K+" }, { label: "Company", value: "Luvid Tech" }],
-      actionLabel: "View Experience",
-      onAction: () => onNavigate('experience'),
-    },
-    {
-      id: 2,
-      title: "+65% THROUGHPUT BOOST",
-      subtitle: "CPU-Aware Node.js Worker Clustering",
-      badge: "Luvid Performance Tuning",
-      detail: "Implemented CPU-aware Node.js worker process distribution across multi-core CPU instances and Redis caching layers for core HRMS APIs, boosting request throughput by 65%.",
-      tech: ["Node.js Worker Threads", "Redis", "TypeScript", "Express 5", "System Tuning"],
-      stats: [{ label: "Boost", value: "+65%" }, { label: "Latency", value: "Sub-50ms" }],
-      actionLabel: "View Performance Details",
-      onAction: () => onNavigate('experience'),
-    },
-    {
-      id: 3,
-      title: "ECOSYSTEM SUITE PLATFORM",
-      subtitle: "Orchestrated Auth Gateway, CRM & Flow E-Commerce",
-      badge: "Luvid Microservices Architecture",
-      detail: "Engineered a concurrently-orchestrated microservices stack (`ecosystem-suite`) uniting centralized SSO authentication (`auth-api`), omnichannel CRM (`crm-api`), and Flow E-Commerce with PDFKit invoice generation (`flow-api`).",
-      tech: ["Express 5", "TypeScript", "React", "Next.js", "PDFKit", "Zod"],
-      stats: [{ label: "Services", value: "Auth+CRM+Flow" }, { label: "Company", value: "Luvid Tech" }],
-      actionLabel: "Explore Ecosystem",
-      onAction: () => onNavigate('projects'),
-    },
-    {
-      id: 4,
-      title: "ZERO-TRUST WEBAUTHN SSO",
-      subtitle: "Biometric Passkeys & SSO Handoff Gateway",
-      badge: "Luvid Cyber Security",
-      detail: "Architected biometric FIDO2 WebAuthn passkey identity provider (`SSO`) and SSO Handoff Gateway using JWT token exchange to eliminate credential sniffing and session hijacking across microservice domains.",
-      tech: ["WebAuthn", "FIDO2", "JWT Exchange", "TypeScript", "SameSite Cookie"],
-      stats: [{ label: "Standard", value: "FIDO2" }, { label: "Security", value: "Zero-Trust" }],
-      actionLabel: "View Security Architecture",
-      onAction: () => onNavigate('projects'),
-    },
-    {
-      id: 5,
-      title: "SAMAY SHIFT SCHEDULING PWA",
-      subtitle: "Smart Shift Rosters & Automated Timecard Exports",
-      badge: "Luvid Next.js 15 PWA",
-      detail: "Built Next.js 15 PWA (`samay-ui`/`samay-api`) with Radix UI & AG-Grid Enterprise for rotational shift rosters, leave approvals, and instant client-side jsPDF & html2canvas timecard PDF generation.",
-      tech: ["Next.js 15", "React 19", "Express 5", "Radix UI", "AG-Grid", "jsPDF"],
-      stats: [{ label: "Framework", value: "Next.js 15" }, { label: "Feature", value: "PWA Offline" }],
-      actionLabel: "View Samay PWA",
-      onAction: () => onNavigate('projects'),
-    },
-    {
-      id: 6,
-      title: "40% CODE REDUCTION",
-      subtitle: "Shared Core Controllers & Modular Architecture",
-      badge: "Luvid Clean Architecture",
-      detail: "Designed shared calculation engines and reusable controller modules across multi-tenant ERP & CRM platforms (`ERP`, `arnoc-api`), cutting duplicate business logic by 40%.",
-      tech: ["TypeScript", "Modular Architecture", "Express", "Mongoose", "DRY Code"],
-      stats: [{ label: "Code Saved", value: "40%" }, { label: "Quality", value: "Enterprise" }],
-      actionLabel: "View Code Highlights",
-      onAction: () => onNavigate('experience'),
-    },
-    {
-      id: 7,
-      title: "LABOURJET FLEET DISPATCH",
-      subtitle: "Real-Time Field Worker Dispatch Platform",
-      badge: "Luvid On-Demand Fleet Engine",
-      detail: "Engineered real-time field worker dispatch system (`labourjet`) with sub-second Socket.IO WebSocket push alerts, Cloudinary image verification, and Docker containerized deployment behind Nginx.",
-      tech: ["Socket.IO", "Express", "MongoDB", "Cloudinary", "Docker", "Nginx"],
-      stats: [{ label: "Alerts", value: "Sub-Second" }, { label: "Deploy", value: "Docker/Nginx" }],
-      actionLabel: "Explore Fleet Engine",
-      onAction: () => onNavigate('projects'),
-    },
-    {
-      id: 8,
-      title: "LENDIT & STOCKSIGO ENGINES",
-      subtitle: "Microfinance EMI Engine & Barcode Stock Control",
-      badge: "Luvid FinTech & Warehouse Logistics",
-      detail: "Programmed transactional compound interest & EMI disbursement pipelines in LendIt (`lendit-api`), alongside multi-warehouse atomic barcode SKU tracking and Redis BullMQ expiry alerts in StocksIgo (`stocksigo-api`).",
-      tech: ["Node.js", "TypeScript", "Redis BullMQ", "Zod", "Atomic Ops"],
-      stats: [{ label: "Lending", value: "Automated EMI" }, { label: "Inventory", value: "Real-Time SKU" }],
-      actionLabel: "View FinTech & Logistics",
-      onAction: () => onNavigate('projects'),
-    }
-  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -314,9 +222,51 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
         </div>
 
-        {/* HERO RULER CAROUSEL SHOWCASE (FEATURING KEY ACHIEVEMENTS & MILESTONES) */}
-        <div className="w-full my-6">
-          <RulerCarousel originalItems={heroCarouselItems} autoPlayDuration={4000} />
+        {/* CORE TECH STACK & ENGINEERING STRENGTHS BRANDING BAR */}
+        <div className="w-full my-8 p-6 sm:p-8 rounded-3xl bg-[#121214] border border-[#222227] shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-[#222227]">
+            <div className="flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#7C5CFF] animate-pulse" />
+              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-[#7C5CFF]">
+                Core Tech Stack &amp; Architectural Strengths
+              </h3>
+            </div>
+            <span className="text-xs font-mono text-[#E4E4E7]">
+              Full-Stack &bull; Microservices &bull; Production VPS Infrastructure
+            </span>
+          </div>
+
+          <div className="flex flex-wrap gap-2.5 sm:gap-3">
+            {[
+              { name: 'Node.js Cluster', category: 'Backend Engine' },
+              { name: 'TypeScript', category: 'Type Safety' },
+              { name: 'Next.js 14/15', category: 'Frontend UI' },
+              { name: 'Go (Golang)', category: 'High-Speed Microservice' },
+              { name: 'Express.js 5', category: 'RESTful APIs' },
+              { name: 'MongoDB Replica Sets', category: 'Databases' },
+              { name: 'Redis & BullMQ', category: 'Caching & Queues' },
+              { name: 'Linux VPS & Nginx', category: 'Cloud Infrastructure' },
+              { name: 'PM2 & Docker', category: 'Process Cluster' },
+              { name: 'WebAuthn (Passkeys)', category: 'Zero-Trust Security' },
+              { name: 'Socket.IO', category: 'Real-Time Sync' },
+              { name: 'Tailwind CSS v4', category: 'Design Systems' },
+              { name: 'Zod & Sharp', category: 'Validation & Media' },
+              { name: 'AG-Grid & FullCalendar', category: 'Enterprise Components' },
+            ].map((tech, idx) => (
+              <div
+                key={idx}
+                className="group flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#161619] border border-[#222227] hover:border-[#7C5CFF]/60 hover:bg-[#1C1C22] transition-all duration-300 cursor-default"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFF] group-hover:scale-150 transition-transform" />
+                <span className="text-xs font-mono text-white font-semibold group-hover:text-[#7C5CFF] transition-colors">
+                  {tech.name}
+                </span>
+                <span className="text-[10px] font-mono text-[#E4E4E7] hidden md:inline">
+                  &bull; {tech.category}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* High-Contrast Impact Metrics Bar */}

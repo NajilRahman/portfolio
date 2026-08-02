@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   name: string;
-  category: 'enterprise' | 'healthcare' | 'security' | 'crm' | 'ecommerce' | 'saas';
+  category: 'enterprise' | 'healthcare' | 'security' | 'crm' | 'fintech' | 'ecommerce' | 'saas';
   tagline: string;
   description: string;
   technologies: string[];

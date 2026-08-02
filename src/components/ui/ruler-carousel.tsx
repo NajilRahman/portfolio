@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Rewind, FastForward, ChevronLeft, ChevronRight, Sparkles, ArrowUpRight, Play, Pause } from "lucide-react";
+import { Rewind, FastForward, ChevronLeft, ChevronRight, Sparkles, ArrowUpRight } from "lucide-react";
 
 export interface CarouselItem {
   id: number | string;
@@ -21,6 +21,43 @@ export interface CarouselItem {
 const ITEM_WIDTH = 540; // width of each item box in px
 const ITEM_GAP = 40;    // gap between items in px
 const ITEM_STEP = ITEM_WIDTH + ITEM_GAP; // 580px step per item
+
+// SimpleIcons logo retriever for tech stack badges
+const getTechLogoUrl = (name: string): string | null => {
+  const lower = name.toLowerCase();
+  if (lower.includes('node')) return 'https://cdn.simpleicons.org/nodedotjs/7C5CFF';
+  if (lower.includes('express')) return 'https://cdn.simpleicons.org/express/7C5CFF';
+  if (lower.includes('typescript')) return 'https://cdn.simpleicons.org/typescript/7C5CFF';
+  if (lower.includes('react')) return 'https://cdn.simpleicons.org/react/7C5CFF';
+  if (lower.includes('next')) return 'https://cdn.simpleicons.org/nextdotjs/7C5CFF';
+  if (lower.includes('mongo')) return 'https://cdn.simpleicons.org/mongodb/7C5CFF';
+  if (lower.includes('redis')) return 'https://cdn.simpleicons.org/redis/7C5CFF';
+  if (lower.includes('go')) return 'https://cdn.simpleicons.org/go/7C5CFF';
+  if (lower.includes('linux')) return 'https://cdn.simpleicons.org/linux/7C5CFF';
+  if (lower.includes('nginx')) return 'https://cdn.simpleicons.org/nginx/7C5CFF';
+  if (lower.includes('pm2')) return 'https://cdn.simpleicons.org/pm2/7C5CFF';
+  if (lower.includes('socket')) return 'https://cdn.simpleicons.org/socketdotio/7C5CFF';
+  if (lower.includes('auth') || lower.includes('passkey')) return 'https://cdn.simpleicons.org/auth0/7C5CFF';
+  if (lower.includes('docker')) return 'https://cdn.simpleicons.org/docker/7C5CFF';
+  if (lower.includes('tailwind')) return 'https://cdn.simpleicons.org/tailwindcss/7C5CFF';
+  if (lower.includes('postgres')) return 'https://cdn.simpleicons.org/postgresql/7C5CFF';
+  return null;
+};
+
+const defaultBrandingLogos = [
+  { name: "Node.js", logo: "nodedotjs" },
+  { name: "MongoDB", logo: "mongodb" },
+  { name: "React.js", logo: "react" },
+  { name: "Next.js 14", logo: "nextdotjs" },
+  { name: "Express.js", logo: "express" },
+  { name: "TypeScript", logo: "typescript" },
+  { name: "Linux VPS", logo: "linux" },
+  { name: "Nginx", logo: "nginx" },
+  { name: "Redis", logo: "redis" },
+  { name: "Go", logo: "go" },
+  { name: "Socket.IO", logo: "socketdotio" },
+  { name: "WebAuthn", logo: "auth0" },
+];
 
 // Create infinite items by triplicating the array
 const createInfiniteItems = (originalItems: CarouselItem[]) => {
@@ -83,7 +120,6 @@ const RulerLines = ({
 export function RulerCarousel({
   originalItems,
   onSelect,
-  autoPlayDuration = 4000, // default 4 seconds per view time
 }: {
   originalItems: CarouselItem[];
   onSelect?: (index: number, item: CarouselItem) => void;
@@ -96,8 +132,6 @@ export function RulerCarousel({
   const initialIndex = itemsPerSet + Math.floor(itemsPerSet / 2);
   const [activeIndex, setActiveIndex] = useState(initialIndex);
   const [isResetting, setIsResetting] = useState(false);
-  const [isAutoPlayEnabled, setIsAutoPlayEnabled] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
   const previousIndexRef = useRef(initialIndex);
 
   const handleItemClick = (newIndex: number) => {
@@ -154,105 +188,75 @@ export function RulerCarousel({
     }
   }, [activeIndex, itemsPerSet, isResetting]);
 
-  // AUTO-PLAY SLIDE TIMER
+  // Notify parent component on selection change
   useEffect(() => {
-    if (!isAutoPlayEnabled || isHovered || isResetting) return;
-
-    const interval = setInterval(() => {
-      handleNext();
-    }, autoPlayDuration);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlayEnabled, isHovered, isResetting, handleNext, autoPlayDuration]);
-
-  // Keyboard Navigation
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (isResetting) return;
-
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        handlePrevious();
-      } else if (event.key === "ArrowRight") {
-        event.preventDefault();
-        handleNext();
+    if (onSelect && !isResetting) {
+      const currentItem = infiniteItems[activeIndex];
+      if (currentItem) {
+        onSelect(currentItem.originalIndex, currentItem);
       }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isResetting, handlePrevious, handleNext]);
-
-  // Trigger onSelect callback
-  const currentOriginalIndex = activeIndex % itemsPerSet;
-  const currentItem = originalItems[currentOriginalIndex];
-
-  useEffect(() => {
-    if (currentItem && onSelect) {
-      onSelect(currentOriginalIndex, currentItem);
     }
-  }, [currentOriginalIndex, currentItem, onSelect]);
+  }, [activeIndex, isResetting, onSelect, infiniteItems]);
 
-  // Math to center the active item precisely:
-  const targetX = -(activeIndex * ITEM_STEP + ITEM_WIDTH / 2);
+  const currentItem = infiniteItems[activeIndex];
+  const targetX = -activeIndex * ITEM_STEP;
 
+  const currentOriginalIndex = currentItem ? currentItem.originalIndex : 0;
+  const totalPages = originalItems.length;
   const currentPage = currentOriginalIndex + 1;
-  const totalPages = itemsPerSet;
+
+  const brandingMarqueeRepeated = [
+    ...defaultBrandingLogos,
+    ...defaultBrandingLogos,
+    ...defaultBrandingLogos,
+    ...defaultBrandingLogos,
+  ];
 
   return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="w-full flex flex-col items-center justify-center bg-[#0C0C0E] border border-[#222227] rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden my-6"
-    >
-      {/* View Time Progress Bar */}
-      {isAutoPlayEnabled && !isHovered && (
-        <motion.div
-          key={activeIndex}
-          initial={{ width: "0%" }}
-          animate={{ width: "100%" }}
-          transition={{ duration: autoPlayDuration / 1000, ease: "linear" }}
-          className="absolute top-0 left-0 h-1 bg-[#7C5CFF] shadow-[0_0_10px_#7C5CFF] z-30"
-        />
-      )}
+    <div className="w-full flex flex-col items-center select-none py-4">
       
       {/* Top Header Controls Bar */}
-      <div className="w-full flex flex-wrap items-center justify-between pb-6 mb-4 border-b border-[#1E1E24] gap-4">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#7C5CFF] animate-pulse" />
-          <span className="text-xs font-mono tracking-widest uppercase text-white font-bold">
-            Companies Worked & Key Achievements
-          </span>
+      <div className="w-full max-w-4xl flex items-center justify-between gap-4 mb-4 px-2">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#7C5CFF] animate-pulse" />
+            <span className="text-xs font-mono font-bold tracking-wider uppercase text-white">
+              COMPANIES WORKED &amp; KEY ACHIEVEMENTS
+            </span>
+          </div>
           {currentItem?.badge && (
-            <span className="hidden sm:inline-block text-[10px] font-mono bg-[#7C5CFF]/20 text-[#7C5CFF] border border-[#7C5CFF]/40 px-2 py-0.5 rounded-full ml-2 font-bold">
+            <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-[#7C5CFF]/15 text-[#7C5CFF] font-bold border border-[#7C5CFF]/40 hidden sm:inline">
               {currentItem.badge}
             </span>
           )}
         </div>
 
         <div className="flex items-center gap-3 text-xs font-mono text-[#A1A1AA]">
-          {/* Auto Play Toggle Button */}
-          <button
-            onClick={() => setIsAutoPlayEnabled(!isAutoPlayEnabled)}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-xl border transition-all cursor-pointer ${
-              isAutoPlayEnabled
-                ? 'bg-[#7C5CFF]/15 border-[#7C5CFF]/40 text-[#7C5CFF]'
-                : 'bg-[#161619] border-[#27272A] text-[#71717A]'
-            }`}
-            title={isAutoPlayEnabled ? "Auto-play is Active (Click to Pause)" : "Auto-play is Paused (Click to Play)"}
-          >
-            {isAutoPlayEnabled ? <Pause size={12} /> : <Play size={12} />}
-            <span>{isAutoPlayEnabled ? (isHovered ? "Paused (Hover)" : "Auto Move") : "Paused"}</span>
-          </button>
-
-          <span className="hidden md:inline text-[#52525B]">&bull;</span>
-          <span className="hidden md:inline">Drag or Use &larr; &rarr; Keys</span>
-
-          <div className="flex items-center gap-1 bg-[#161619] border border-[#27272A] px-3 py-1 rounded-xl">
+          <div className="flex items-center gap-1.5 bg-[#161619] border border-[#27272A] px-3 py-1.5 rounded-xl">
             <span className="text-white font-bold">{currentPage}</span>
             <span className="text-[#52525B]">/</span>
             <span className="text-[#A1A1AA]">{totalPages}</span>
           </div>
+        </div>
+      </div>
+
+      {/* FAST MOVING BRANDING STRIP WITH LOGOS (MongoDB, Next.js, React, Node.js, Express, TypeScript, etc.) */}
+      <div className="w-full max-w-4xl overflow-hidden py-2 mb-3 bg-[#121216]/80 border border-[#222227] rounded-xl relative shadow-md">
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#121216] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#121216] to-transparent z-10 pointer-events-none" />
+        
+        <div className="animate-marquee-fast flex items-center gap-4 whitespace-nowrap">
+          {brandingMarqueeRepeated.map((item, bIdx) => (
+            <div key={`brand-${bIdx}`} className="flex items-center gap-2 px-3 py-1 rounded-lg bg-[#1B1B20] border border-[#2A2A32] shrink-0 hover:border-[#7C5CFF] transition-colors">
+              <img
+                src={`https://cdn.simpleicons.org/${item.logo}/7C5CFF`}
+                alt={item.name}
+                className="w-4 h-4 object-contain filter brightness-120 shrink-0"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
+              <span className="text-xs font-mono font-bold text-white">{item.name}</span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -276,7 +280,7 @@ export function RulerCarousel({
             className="flex items-center justify-start absolute left-1/2"
             style={{ gap: `${ITEM_GAP}px` }}
             animate={{
-              x: isResetting ? targetX : targetX,
+              x: targetX,
             }}
             transition={
               isResetting
@@ -353,7 +357,7 @@ export function RulerCarousel({
               <div className="p-3 rounded-xl bg-[#7C5CFF]/15 border border-[#7C5CFF]/30 text-[#7C5CFF] shrink-0 mt-1">
                 <Sparkles size={22} />
               </div>
-              <div className="space-y-2 flex-1">
+              <div className="space-y-3 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <h4 className="text-lg font-bold text-white font-display">
                     {currentItem.title}
@@ -369,18 +373,31 @@ export function RulerCarousel({
                   {currentItem.detail || `${currentItem.title} — Key engineering highlight & production implementation.`}
                 </p>
 
-                {/* Tech Stack Pills */}
+                {/* Tech Stack Badges with Official Logos */}
                 {currentItem.tech && currentItem.tech.length > 0 && (
                   <div className="flex flex-wrap items-center gap-2 pt-1">
-                    <span className="text-[11px] font-mono text-[#71717A]">Stack:</span>
-                    {currentItem.tech.map((t, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-[#1C1C22] border border-[#2A2A32] text-white"
-                      >
-                        {t}
-                      </span>
-                    ))}
+                    <span className="text-[11px] font-mono text-[#7C5CFF] font-bold">Stack:</span>
+                    {currentItem.tech.map((t, tIdx) => {
+                      const logoUrl = getTechLogoUrl(t);
+                      return (
+                        <span
+                          key={tIdx}
+                          className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-lg bg-[#1C1C22] border border-[#2A2A32] text-white hover:border-[#7C5CFF] transition-colors shadow-sm"
+                        >
+                          {logoUrl ? (
+                            <img
+                              src={logoUrl}
+                              alt={t}
+                              className="w-3.5 h-3.5 object-contain filter brightness-120 shrink-0"
+                              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                            />
+                          ) : (
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFF]" />
+                          )}
+                          <span className="font-semibold">{t}</span>
+                        </span>
+                      );
+                    })}
                   </div>
                 )}
               </div>

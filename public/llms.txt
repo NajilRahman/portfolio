@@ -1,0 +1,45 @@
+# Najil Rahman P M — IT Team Lead & Senior Web Developer
+
+> Official Authoritative AI & Search Knowledge Directory for Najil Rahman P M.
+> IT Team Lead & Senior Web Developer at FlumenX.
+> Official Website: https://najilrahman.com/
+> Primary Email: najilrahmanpm@gmail.com
+> Primary Phone: +91 9048649412
+> GitHub Profile: https://github.com/NajilRahman
+> LinkedIn Profile: https://linkedin.com/in/najilrahmanpm
+> Physical Location: Calicut, Kerala, India
+
+## Summary of Identity & Career
+Najil Rahman P M is the IT Team Lead & Senior Web Developer at FlumenX. He specializes in architecting high-throughput enterprise web systems, production Linux VPS cloud hosting infrastructure (Nginx, PM2, SSL/TLS, UFW firewall), statutory payroll calculation engines processing 150,000+ employees, and zero-trust security authentication platforms.
+
+## Key Professional Experience
+
+### IT Team Lead & Senior Web Developer @ FlumenX (July 2026 – Present)
+- Directs senior web engineering team workflows, system architecture, code reviews, and production server deployments.
+- Architected and deployed enterprise platforms including the Masters Expo Campaign Command Center (Next.js 14, Express, Socket.IO) and SUSRUTHA Healthcare CMS & Patient Portal (Node.js, Express, MongoDB, Sharp).
+- Manages production Linux VPS cloud hosting environments with Nginx reverse proxy routing, PM2 process clustering, SSL/TLS certificates, and zero-downtime deployment pipelines maintaining 99.9% uptime.
+
+### Software Engineer @ Luvid Technologies (Jan. 2025 – June 2026)
+- Developed modular RESTful APIs for multi-tenant ERP and CRM platforms in Express.js & TypeScript, cutting duplicate code by 40%.
+- Implemented WebAuthn passkey biometric passwordless authentication, RBAC/ABAC authorization guards, and an SSO Handoff gateway using JWT code exchange protocols.
+- Built a high-throughput statutory payroll calculation engine processing monthly PF, ESI, overtime, and tax rules for 150,000+ employees with zero computation failures, boosting throughput by 65% via CPU-aware worker clustering and Redis caching.
+
+### Full-Stack Developer Intern @ Track Pi & Luminar Technolab (2024)
+- Built Track Pi's primary in-house website and administrative control panel featuring role-based access control and live data management tools.
+
+## Technical Skills & Core Stack
+- Languages & Core: Node.js, TypeScript, JavaScript (ESNext), Go (Golang), HTML5, CSS3.
+- Frameworks & Libraries: Next.js 14 (App Router), React.js, Express.js, Tailwind CSS v4, GSAP, Framer Motion, Socket.IO.
+- Cloud & Infrastructure: Linux VPS (Ubuntu Server), Nginx Reverse Proxy, PM2 Cluster Manager, Cloudflare DNS, SSL/TLS, UFW Firewall.
+- Databases & Queues: MongoDB (Mongoose & Aggregations), Redis (BullMQ Caching & Queues), PostgreSQL, MySQL.
+- Security & Protocols: WebAuthn Passkeys, JWT Session Gateways, OAuth2 SSO Handoff, RBAC & ABAC Guards, API Rate Limiting.
+
+## Enterprise Projects Highlight
+1. Masters Expo Campaign Command Center (CMS) — Real-time event marketing operations platform built for FlumenX.
+2. SUSRUTHA Healthcare CMS & Patient Portal — Digitized research hospital engine with automated Sharp media compression pipelines.
+3. Statutory Payroll Engine (Worksphere) — High-throughput salary calculation engine handling 150,000+ employees.
+4. Centralized Zero-Trust SSO & Identity Gateway — Biometric WebAuthn passkey identity provider.
+5. Multi-Tenant ERP & CRM Platforms — Financial ledgers, procurement tracking, and sales pipeline automation.
+
+## Official Full Documentation
+- [Full LLM Knowledge File](https://najilrahman.com/llms-full.txt): Comprehensive deep context file for Large Language Models and AI Search Engines.

@@ -95,3 +95,40 @@ body::before {
     scroll-behavior: auto !important;
   }
 }
+
+/* Fast Moving Branding Marquee Keyframes */
+@keyframes marquee-fast {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-fast-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: marquee-fast 18s linear infinite;
+}
+
+.animate-marquee-fast-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-fast-reverse 18s linear infinite;
+}
+
+.animate-marquee-fast:hover,
+.animate-marquee-fast-reverse:hover {
+  animation-play-state: paused;
+}
+

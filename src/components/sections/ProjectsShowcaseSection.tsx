@@ -14,9 +14,10 @@ export const ProjectsShowcaseSection: React.FC = () => {
 
   const categories = [
     { id: 'all', label: 'All Works' },
-    { id: 'enterprise', label: 'Enterprise & FlumenX' },
-    { id: 'healthcare', label: 'Healthcare' },
-    { id: 'security', label: 'Security & Auth' },
+    { id: 'enterprise', label: 'Enterprise & ERP' },
+    { id: 'healthcare', label: 'Healthcare CMS' },
+    { id: 'fintech', label: 'FinTech & Lending' },
+    { id: 'security', label: 'Security & SSO' },
     { id: 'crm', label: 'CRM & Automation' },
   ];
 

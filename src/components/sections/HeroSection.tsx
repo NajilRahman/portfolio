@@ -200,15 +200,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <span className="text-[#E4E4E7]">&bull; {profileData.title} @ {profileData.company}</span>
             </div>
 
-            {/* Massive Hero Heading with Primary Keyword H1 */}
+            {/* Sleek Hero Heading with Primary Keyword H1 */}
             <h1
               ref={headlineRef}
-              className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight text-white leading-[1.05] mb-8 opacity-0"
+              className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.1] mb-6 opacity-0"
             >
-              <span className="block text-xl sm:text-2xl font-mono font-medium text-[#7C5CFF] tracking-wider uppercase mb-3">
-                Najil Rahman &mdash; Senior Web Developer &amp; Systems Architect
+              <span className="block text-sm sm:text-base font-mono font-semibold text-[#7C5CFF] tracking-widest uppercase mb-3">
+                SYSTEMS ARCHITECT &amp; SENIOR WEB DEVELOPER
               </span>
-              Architecting <span className="text-[#7C5CFF]">Enterprise</span> Web Systems &amp; High-Throughput Engines.
+              Architecting <span className="text-[#7C5CFF]">Enterprise</span> Web Systems.
             </h1>
 
             {/* Bio Subtitle */}

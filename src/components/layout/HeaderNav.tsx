@@ -31,25 +31,25 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ activeSection, onNavigate 
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0B0B0C]/80 backdrop-blur-md border-b border-[#1E1E24]/60 py-4'
+          ? 'bg-[#0B0B0C]/90 backdrop-blur-md border-b border-[#222227] py-4'
           : 'bg-transparent py-6 sm:py-8'
       }`}
     >
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 flex items-center justify-between">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 flex items-center justify-between">
         
         {/* Brand Mark */}
         <button
           onClick={() => onNavigate('hero')}
           className="group flex items-center gap-3 cursor-pointer text-left"
         >
-          <span className="w-9 h-9 rounded-full bg-[#121214] border border-[#222227] flex items-center justify-center font-display font-bold text-sm text-[#F4F4F6] group-hover:border-[#7C5CFF] transition-colors">
+          <span className="w-9 h-9 rounded-full bg-[#121214] border border-[#222227] flex items-center justify-center font-display font-bold text-sm text-white group-hover:border-[#7C5CFF] transition-colors">
             NR
           </span>
           <div className="hidden sm:block">
-            <div className="font-display font-bold text-sm tracking-tight text-[#F4F4F6]">
+            <div className="font-display font-bold text-sm tracking-tight text-white">
               {profileData.name}
             </div>
-            <div className="text-[11px] font-mono text-[#90909E] flex items-center gap-1.5">
+            <div className="text-[11px] font-mono text-[#E4E4E7] flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFF] animate-pulse" />
               FlumenX Senior Dev
             </div>
@@ -65,12 +65,12 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ activeSection, onNavigate 
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
                 className={`px-3 py-1.5 text-xs sm:text-sm font-medium transition-all relative cursor-pointer ${
-                  isActive ? 'text-[#F4F4F6]' : 'text-[#90909E] hover:text-[#F4F4F6]'
+                  isActive ? 'text-white font-bold' : 'text-[#E4E4E7] hover:text-white'
                 }`}
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[1px] bg-[#7C5CFF]" />
+                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#7C5CFF]" />
                 )}
               </button>
             );
@@ -81,7 +81,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ activeSection, onNavigate 
         <div className="hidden lg:block">
           <button
             onClick={() => onNavigate('contact')}
-            className="text-xs font-mono tracking-wider uppercase px-4 py-2 rounded-full border border-[#222227] text-[#F4F4F6] hover:border-[#7C5CFF] hover:text-[#7C5CFF] transition-colors cursor-pointer"
+            className="text-xs font-mono tracking-wider uppercase px-4 py-2 rounded-full border border-[#222227] text-white hover:border-[#7C5CFF] hover:text-[#7C5CFF] transition-colors cursor-pointer"
           >
             Get In Touch
           </button>

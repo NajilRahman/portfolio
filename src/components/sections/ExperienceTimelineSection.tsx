@@ -7,36 +7,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const ExperienceTimelineSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const pathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Timeline Line Drawing Animation
-      if (pathRef.current) {
-        const pathLength = pathRef.current.getTotalLength();
-        gsap.set(pathRef.current, {
-          strokeDasharray: pathLength,
-          strokeDashoffset: pathLength,
-        });
-
-        gsap.to(pathRef.current, {
-          strokeDashoffset: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 70%',
-            end: 'bottom 60%',
-            scrub: 0.8,
-          },
-        });
-      }
-
-      // Card Stagger Fade-In
       const cards = gsap.utils.toArray<HTMLElement>('.experience-card');
       cards.forEach((card) => {
         gsap.fromTo(
           card,
-          { y: 50, opacity: 0 },
+          { y: 40, opacity: 0 },
           {
             y: 0,
             opacity: 1,
@@ -55,40 +33,26 @@ export const ExperienceTimelineSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="experience" ref={containerRef} className="py-24 sm:py-32 border-t border-[#1E1E24] relative z-10">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
+    <section id="experience" ref={containerRef} className="py-24 sm:py-32 border-t border-[#222227] relative z-10">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
           <div>
-            <div className="text-xs font-mono tracking-widest uppercase text-[#7C5CFF] mb-3">
+            <div className="text-xs font-mono tracking-widest uppercase text-[#7C5CFF] mb-3 font-semibold">
               03 &bull; Career & Technical Evolution
             </div>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#F4F4F6] tracking-tight">
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">
               Work Experience & Platform Milestones
             </h2>
           </div>
-          <div className="text-sm font-mono text-[#90909E]">
+          <div className="text-sm font-mono text-[#E4E4E7]">
             2024 &ndash; 2026+ Timeline
           </div>
         </div>
 
         {/* Vertical Timeline Container */}
-        <div className="relative pl-6 sm:pl-10 space-y-16">
-          
-          {/* Animated SVG Connecting Line */}
-          <div className="absolute left-[7px] sm:left-[11px] top-3 bottom-3 w-[2px] pointer-events-none">
-            <svg className="w-full h-full" preserveAspectRatio="none">
-              <path
-                ref={pathRef}
-                d="M 1 0 V 1000"
-                fill="none"
-                stroke="#7C5CFF"
-                strokeWidth="2"
-              />
-            </svg>
-          </div>
-
+        <div className="relative pl-6 sm:pl-10 space-y-16 border-l border-[#222227]">
           {experienceData.map((exp, idx) => (
             <div key={idx} className="experience-card relative group">
               
@@ -102,31 +66,31 @@ export const ExperienceTimelineSection: React.FC = () => {
               />
 
               {/* Milestone Card Content */}
-              <div className="p-8 rounded-2xl bg-[#121214] border border-[#1E1E24] group-hover:border-[#7C5CFF]/40 transition-all duration-300">
+              <div className="p-8 rounded-2xl bg-[#121214] border border-[#222227] group-hover:border-[#7C5CFF]/50 transition-all duration-300">
                 
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
                   <div>
-                    <div className="text-xs font-mono text-[#7C5CFF] mb-1">
+                    <div className="text-xs font-mono text-[#7C5CFF] font-semibold mb-1">
                       {exp.period} &bull; {exp.location}
                     </div>
-                    <h3 className="font-display font-bold text-2xl text-[#F4F4F6]">
+                    <h3 className="font-display font-bold text-2xl text-white">
                       {exp.role}
                     </h3>
                   </div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#161619] border border-[#222227] text-xs font-mono text-[#F4F4F6] w-fit">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#161619] border border-[#222227] text-xs font-mono text-white font-semibold w-fit">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#7C5CFF]" />
                     {exp.company}
                   </div>
                 </div>
 
-                <p className="text-sm text-[#90909E] leading-relaxed mb-6 font-normal">
+                <p className="text-sm text-[#E4E4E7] leading-relaxed mb-6 font-normal">
                   {exp.summary}
                 </p>
 
-                {/* Specific Highlights */}
+                {/* Highlights */}
                 <div className="space-y-2 mb-6">
                   {exp.highlights.map((highlight, i) => (
-                    <div key={i} className="text-xs text-[#90909E] flex items-start gap-2.5 leading-relaxed">
+                    <div key={i} className="text-xs text-[#E4E4E7] flex items-start gap-2.5 leading-relaxed">
                       <span className="text-[#7C5CFF] font-bold text-sm leading-none mt-0.5">&bull;</span>
                       <span>{highlight}</span>
                     </div>
@@ -134,11 +98,11 @@ export const ExperienceTimelineSection: React.FC = () => {
                 </div>
 
                 {/* Skills Tags */}
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-[#1E1E24]">
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-[#222227]">
                   {exp.skillsUsed.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[#161619] text-[#90909E] border border-[#222227]"
+                      className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[#161619] text-white border border-[#222227]"
                     >
                       {skill}
                     </span>

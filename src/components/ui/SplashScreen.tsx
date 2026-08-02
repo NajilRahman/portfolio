@@ -26,14 +26,6 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
   ];
 
   useEffect(() => {
-    // Only show once per browser session
-    const hasSeenSplash = sessionStorage.getItem('hasSeenPortfolioSplash');
-    if (hasSeenSplash === 'true') {
-      setIsDismissed(true);
-      if (onComplete) onComplete();
-      return;
-    }
-
     document.body.style.overflow = 'hidden';
 
     // Fast smooth 00 to 100% counter
@@ -46,7 +38,6 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             setTimeout(() => {
               setIsDismissed(true);
               document.body.style.overflow = 'unset';
-              sessionStorage.setItem('hasSeenPortfolioSplash', 'true');
               if (onComplete) onComplete();
             }, 750);
           }, 350);

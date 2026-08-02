@@ -25,6 +25,19 @@ export const ProjectsShowcaseSection: React.FC = () => {
       ? projectsData
       : projectsData.filter((p) => p.category === activeCategory);
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // 2026 Trending Card Stacking & Shuffling Scroll Animation
@@ -193,17 +206,24 @@ export const ProjectsShowcaseSection: React.FC = () => {
 
       </div>
 
-      {/* Case Details Modal */}
+      {/* Case Details Scrollable Modal with Lenis Bypass Attributes */}
       {selectedProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#0B0B0C]/90 backdrop-blur-xl"
+          data-lenis-prevent="true"
+          data-lenis-prevent-wheel="true"
+          data-lenis-prevent-touch="true"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#0B0B0C]/90 backdrop-blur-xl overflow-y-auto"
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="bg-[#121214] border border-[#222227] rounded-3xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl"
+            data-lenis-prevent="true"
+            data-lenis-prevent-wheel="true"
+            data-lenis-prevent-touch="true"
+            className="bg-[#121214] border border-[#222227] rounded-3xl max-w-2xl w-full my-auto shadow-2xl overflow-hidden flex flex-col max-h-[88vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-start mb-6">
+            {/* Modal Header */}
+            <div className="p-6 sm:p-8 border-b border-[#222227] flex justify-between items-start shrink-0 bg-[#121214]">
               <div>
                 <span className="text-xs font-mono text-[#7C5CFF] uppercase tracking-wider font-semibold">
                   {selectedProject.category} Case Study
@@ -214,59 +234,71 @@ export const ProjectsShowcaseSection: React.FC = () => {
               </div>
               <button
                 onClick={() => setSelectedProject(null)}
-                className="text-white hover:text-[#7C5CFF] text-lg font-mono px-2 py-1 cursor-pointer"
+                className="w-9 h-9 rounded-full bg-[#161619] border border-[#222227] text-white hover:text-[#7C5CFF] hover:border-[#7C5CFF] flex items-center justify-center font-mono text-sm transition-colors cursor-pointer"
+                aria-label="Close modal"
               >
                 ✕
               </button>
             </div>
 
-            <p className="text-sm text-[#E4E4E7] leading-relaxed mb-6">
-              {selectedProject.description}
-            </p>
-
-            <div className="mb-6">
-              <h4 className="text-xs font-mono uppercase text-[#7C5CFF] mb-2 font-bold">Impact Summary</h4>
-              <p className="text-sm text-white bg-[#161619] p-4 rounded-2xl border border-[#222227] leading-relaxed">
-                {selectedProject.impact}
+            {/* Modal Body - Smooth Scrollable */}
+            <div
+              data-lenis-prevent="true"
+              data-lenis-prevent-wheel="true"
+              data-lenis-prevent-touch="true"
+              className="p-6 sm:p-8 overflow-y-auto space-y-6 scrollbar-thin"
+              style={{ overscrollBehavior: 'contain' }}
+            >
+              <p className="text-sm text-[#E4E4E7] leading-relaxed">
+                {selectedProject.description}
               </p>
-            </div>
 
-            {selectedProject.architecturePoints && (
-              <div className="mb-6">
-                <h4 className="text-xs font-mono uppercase text-[#7C5CFF] mb-2 font-bold">Architecture Highlights</h4>
-                <ul className="space-y-2">
-                  {selectedProject.architecturePoints.map((pt: string, i: number) => (
-                    <li key={i} className="text-xs font-mono text-[#E4E4E7] flex items-start gap-2">
-                      <span className="text-[#7C5CFF] font-bold mt-0.5">&bull;</span>
-                      <span>{pt}</span>
-                    </li>
+              <div>
+                <h4 className="text-xs font-mono uppercase text-[#7C5CFF] mb-2 font-bold">Impact Summary</h4>
+                <p className="text-sm text-white bg-[#161619] p-4 rounded-2xl border border-[#222227] leading-relaxed">
+                  {selectedProject.impact}
+                </p>
+              </div>
+
+              {selectedProject.architecturePoints && (
+                <div>
+                  <h4 className="text-xs font-mono uppercase text-[#7C5CFF] mb-2 font-bold">Architecture Highlights</h4>
+                  <ul className="space-y-2">
+                    {selectedProject.architecturePoints.map((pt: string, i: number) => (
+                      <li key={i} className="text-xs font-mono text-[#E4E4E7] flex items-start gap-2">
+                        <span className="text-[#7C5CFF] font-bold mt-0.5">&bull;</span>
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div>
+                <h4 className="text-xs font-mono uppercase text-[#7C5CFF] mb-2 font-bold">Technologies Used</h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.technologies.map((tech: string, i: number) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 rounded-md text-xs font-mono bg-[#161619] text-white border border-[#222227]"
+                    >
+                      {tech}
+                    </span>
                   ))}
-                </ul>
-              </div>
-            )}
-
-            <div className="mb-8">
-              <h4 className="text-xs font-mono uppercase text-[#7C5CFF] mb-2 font-bold">Technologies Used</h4>
-              <div className="flex flex-wrap gap-2">
-                {selectedProject.technologies.map((tech: string, i: number) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 rounded-md text-xs font-mono bg-[#161619] text-white border border-[#222227]"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                </div>
               </div>
             </div>
 
-            <div className="flex justify-end gap-4 pt-4 border-t border-[#222227]">
+            {/* Modal Footer */}
+            <div className="p-4 sm:p-6 border-t border-[#222227] shrink-0 bg-[#121214] flex justify-end gap-4">
               <button
                 onClick={() => setSelectedProject(null)}
-                className="px-6 py-2.5 rounded-full text-xs font-mono bg-[#161619] text-white hover:border-[#7C5CFF] border border-[#222227] cursor-pointer"
+                className="px-6 py-2.5 rounded-full text-xs font-mono bg-[#7C5CFF] text-white hover:bg-[#9275FF] font-bold cursor-pointer transition-colors shadow-md shadow-[#7C5CFF]/20"
               >
                 Close Case
               </button>
             </div>
+
           </div>
         </div>
       )}

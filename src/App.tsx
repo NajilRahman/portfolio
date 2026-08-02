@@ -3,6 +3,8 @@ import { EditorialCanvas } from './components/canvas/EditorialCanvas';
 import { SmoothScroll } from './components/motion/SmoothScroll';
 import { HeaderNav } from './components/layout/HeaderNav';
 import { ScrollProgress } from './components/ui/ScrollProgress';
+import { SpotlightCursor } from './components/ui/SpotlightCursor';
+import SplashCursor from './components/ui/SplashCursor';
 import { HeroSection } from './components/sections/HeroSection';
 import { AboutSection } from './components/sections/AboutSection';
 import { ProjectsShowcaseSection } from './components/sections/ProjectsShowcaseSection';
@@ -53,6 +55,25 @@ function App() {
     <SmoothScroll>
       <div className="relative min-h-screen bg-[#0B0B0C] text-[#F4F4F6] font-sans select-none overflow-x-hidden">
         
+        {/* React Bits Fluid WebGL Splash Cursor */}
+        <SplashCursor
+          SIM_RESOLUTION={128}
+          DYE_RESOLUTION={1440}
+          DENSITY_DISSIPATION={3.5}
+          VELOCITY_DISSIPATION={2}
+          PRESSURE={0.1}
+          PRESSURE_ITERATIONS={20}
+          CURL={3}
+          SPLAT_RADIUS={0.2}
+          SPLAT_FORCE={6000}
+          SHADING={true}
+          COLOR="#7C5CFF"
+          RAINBOW_MODE={true}
+        />
+
+        {/* Custom Precision Magnetic Crosshair Cursor */}
+        <SpotlightCursor />
+
         {/* Top Reading Progress Bar */}
         <ScrollProgress />
 

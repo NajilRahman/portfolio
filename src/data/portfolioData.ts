@@ -186,13 +186,13 @@ export const experienceData: Position[] = [
   },
   {
     company: "Luminar Technolab",
-    role: "MERN Stack Intern (3-Month Internship)",
+    role: "MERN Stack Developer Trainee",
     location: "Kozhikode, Kerala, India",
     period: "July 2024 – Sept. 2024",
     isCurrent: false,
     logoBadge: "LUMINAR",
     logoUrl: "https://www.luminartechnolab.com/static/assets/img/favicon.png",
-    summary: "Completed an intensive 3-month MERN Stack internship building full-stack web applications, REST APIs, and database pipelines.",
+    summary: "Completed comprehensive MERN Stack development training building full-stack web applications, REST APIs, and database pipelines.",
     highlights: [
       "Engineered full-stack MERN web applications with secure authentication flows and custom RESTful endpoints.",
       "Optimized database query performance, indexing, and MongoDB schema design across multi-table project pipelines.",
